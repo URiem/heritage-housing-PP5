@@ -2,7 +2,7 @@
 
 **Data Analysis and Predictive Modelling Study**
 
-![I am responsive image](media/iamresponsive.PNG)
+![I am responsive image](media/model_image.png)
 
 **Live Site:**
 
