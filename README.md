@@ -64,7 +64,7 @@ The client is interested in the following outcomes:
 
 ## Dataset Content
 
-- The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). The business requirements are based on a fictitious, but realisting, user story where predictive analytics can be applied in a real world scenario. 
+- The dataset is sourced from [Kaggle](https://www.kaggle.com/codeinstitute/housing-prices-data). The business requirements are based on a fictitious, but realisting, user story where predictive analytics can be applied in a real world scenario.
 
 - The dataset has almost 1.5 thousand rows and represents housing records from Ames, Iowa, indicating house profile (Floor Area, Basement, Garage, Kitchen, Lot, Porch, Wood Deck, Year Built) and its respective sale price for houses built between 1872 and 2010.
 
@@ -112,7 +112,6 @@ The client is interested in the following outcomes:
 - Business Requirement 3: Online App and Deployement
   - We will build an app using streamlit that displays all the desired data analysis and visualization as well as a feature that will allow the client to predict the sale prices for her and any other property in Ames, Iowa.
   - We will deploy the app using Heroku.
-
 
 ## ML Business Case
 
@@ -179,7 +178,7 @@ This page will include
 
 ### Heroku
 
-- The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
+- The App live link is: https://YOUR_APP_NAME.herokuapp.com/
 - Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
 - The project was deployed to Heroku using the following steps.
 
@@ -196,8 +195,8 @@ This page will include
 
 ## Credits
 
-- In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-- You can break the credits section up into Content and Media, depending on what you have included in your project. 
+- In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism.
+- You can break the credits section up into Content and Media, depending on what you have included in your project.
 
 ### Content
 
