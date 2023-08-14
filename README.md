@@ -2,11 +2,11 @@
 
 **Data Analysis and Predictive Modelling Study**
 
-![Mockup image](#)
+![I am responsive image](media/iamresponsive.PNG)
 
 **Live Site:**
 
-[Live webpage](#)
+[Live webpage](https://heritage-housing-uriem-381968c86628.herokuapp.com)
 
 **Link to Repository:**
 
