@@ -2,7 +2,10 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 from src.data_management import load_house_prices_data, load_pkl_file
-from src.machine_learning.evaluate_regression import regression_performance, regression_evaluation, regression_evaluation_plots
+from src.machine_learning.evaluate_regression import (
+    regression_performance,
+    regression_evaluation,
+    regression_evaluation_plots)
 
 
 def page_predict_price_ml_body():
