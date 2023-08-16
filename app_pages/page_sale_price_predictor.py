@@ -1,10 +1,14 @@
-from src.machine_learning.predictive_analysis_ui import predict_sale_price
 import streamlit as st
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from datetime import date
-from src.data_management import load_house_prices_data, load_pkl_file
+from src.data_management import (
+    load_house_prices_data,
+    load_pkl_file,
+    load_inherited_house_data)
 from src.machine_learning.evaluate_regression import regression_performance
+from src.machine_learning.predictive_analysis_ui import predict_sale_price
 
 
 def page_sale_price_predictor_body():
@@ -30,27 +34,26 @@ def page_sale_price_predictor_body():
     st.write("---")
 
     # Generate Live Data
-    # check_variables_for_UI(sale_price_features)
     X_live = DrawInputsWidgets()
 
     # predict on live data
     if st.button("Run Predictive Analysis"):
-        sale_price_prediction = predict_sale_price(
-            X_live, sale_price_features, sale_price_pipe)
+        predict_sale_price(X_live, sale_price_features, sale_price_pipe)
 
+    st.write("---")
 
-# def check_variables_for_UI(sale_price_features):
-#     import itertools
+    st.write("## Price prediction for the clients inherited properties:")
+    in_df = load_inherited_house_data()
 
-#     # The widgets inputs are the features used in sale price pipeline
-#     combined_features = set(
-#         list(
-#             itertools.chain(sale_price_features)
-#         )
-#     )
-#     st.write(
-#         f"* There are {len(combined_features)} features for the UI:
-# \n\n {combined_features}")
+    st.write("* Features of Inherited Homes")
+    st.write(in_df)
+
+    if st.button("Run Prediction on Inherited Homes"):
+        inherited_price_prediction = predict_sale_price(
+            in_df, sale_price_features, sale_price_pipe)
+        total_value = inherited_price_prediction.sum()
+        st.write("* The total value of the inherited homes is")
+        st.write(f"${total_value}")
 
 
 def DrawInputsWidgets():
@@ -59,7 +62,7 @@ def DrawInputsWidgets():
     df = load_house_prices_data()
     percentageMin, percentageMax = 0.4, 2.0
 
-# we create input widgets only for 24 features we will use 21 to start
+    # we create input widgets for 24 features we will use 23 to start
     col01, col02, col03, col04 = st.beta_columns(4)
     col05, col06, col07, col08 = st.beta_columns(4)
     col09, col10, col11, col12 = st.beta_columns(4)

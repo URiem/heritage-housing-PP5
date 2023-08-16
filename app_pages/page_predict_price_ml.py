@@ -43,7 +43,7 @@ def page_predict_price_ml_body():
 
     # show pipeline steps
     st.write("### ML pipeline to predict property sale prices.")
-    st.write(sale_price_pipe)
+    st.code(sale_price_pipe)
     st.write("---")
 
     # show best features
