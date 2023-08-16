@@ -2,6 +2,7 @@ import streamlit as st
 
 # Change this to just contain one function to predict house prices
 
+
 def predict_sale_price(X_live, property_features, sale_price_pipeline):
 
     # from live data, subset features related to this pipeline
@@ -15,9 +16,9 @@ def predict_sale_price(X_live, property_features, sale_price_pipeline):
     # tenure_levels = tenure_labels_map[tenure_prediction[0]]
 
     statement = (
-        f"* Given the features provided for the property, the model has predicted"
-        f"  a sale value of:"
-        )
+        f"* Given the features provided for the property, the model has "
+        f"  predicted a sale value of:"
+    )
 
     st.write(statement)
     st.write(sale_price_prediction)

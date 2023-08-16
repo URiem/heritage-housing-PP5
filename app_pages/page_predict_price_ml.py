@@ -15,7 +15,7 @@ def page_predict_price_ml_body():
     sale_price_pipe = load_pkl_file(
         f"outputs/ml_pipeline/predict_sale_price/{version}/regression_pipeline.pkl")
     sale_price_feat_importance = plt.imread(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/features_importance.png")
+        f"outputs/ml_pipeline/predict_sale_price/{version}/feat_importance.png")
     model_perform_img = plt.imread(
         f"outputs/ml_pipeline/predict_sale_price/{version}/model_image.png")
     X_train = pd.read_csv(
@@ -30,12 +30,15 @@ def page_predict_price_ml_body():
     st.write("## ML Pipeline: Predict Property Sale Price")
     # display pipeline training summary conclusions
     st.info(
-        f"* A Regressor model was trained to predict the sale price of properties in Ames, Iowa. "
-        f" The initial data set contained 23 Features and SalePrice as the target."
+        f"* A Regressor model was trained to predict the sale price of"
+        f" properties in Ames, Iowa. "
+        f" The initial data set contained 23 Features and SalePrice as "
+        f" the target."
         f" Two features were dropped due to around 90% of missing data."
         f" Feature engineering was carried out on the remaining data. "
         f" The model was tuned using a hyperparameter search and was found to "
-        f" **meet the project requirement**: 0.8 of R2 Score on train and test sets. ")
+        f" **meet the project requirement**: 0.8 of R2 Score on "
+        f" train and test sets. ")
     st.write("---")
 
     # show pipeline steps

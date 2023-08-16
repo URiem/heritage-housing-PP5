@@ -22,7 +22,7 @@ def page_sale_price_predictor_body():
 
     st.write("### Sale Price Predictor Interface")
     st.info(
-        f"* The client is interested in determining the likely sale price of a "
+        f"* The client is interested in determining the likely sale price of a"
         f" home in Ames, Iowa. The price prediction will be based on various "
         f" features of the property in question, which the client and input"
         f" using the selections below."
@@ -49,7 +49,8 @@ def page_sale_price_predictor_body():
 #         )
 #     )
 #     st.write(
-#         f"* There are {len(combined_features)} features for the UI: \n\n {combined_features}")
+#         f"* There are {len(combined_features)} features for the UI:
+# \n\n {combined_features}")
 
 
 def DrawInputsWidgets():
@@ -66,12 +67,14 @@ def DrawInputsWidgets():
     col17, col18, col19, col20 = st.beta_columns(4)
     col21, col22, col23, col24 = st.beta_columns(4)
 
-    # We are using these features to feed the ML pipeline - values copied from check_variables_for_UI() result
+    # We are using these features to feed the ML pipeline -
+    # values copied from check_variables_for_UI() result
 
     # create an empty DataFrame, which will be the live data
     X_live = pd.DataFrame([], index=[0])
 
-    # from here on we draw the widget based on the variable type (numerical or categorical)
+    # from here on we draw the widget based on the variable type
+    # (numerical or categorical)
     # and set initial values
     with col01:
         feature = "1stFlrSF"
