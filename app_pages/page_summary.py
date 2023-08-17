@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 def page_summary_body():
 
-# Image sources: https://commons.wikimedia.org/wiki/File:Ames_Iowa_Main_Street_%28bannerportada_esvoy%29.jpg
-# 
+    # Image sources: https://commons.wikimedia.org/wiki/File:Ames_Iowa_Main_Street_%28bannerportada_esvoy%29.jpg
+    # https://www.niche.com/colleges/iowa-state-university/
     image_main = plt.imread(f"media/amesiowa.jpg")
     image_isu = plt.imread(f"media/iowasu.jpg")
 
