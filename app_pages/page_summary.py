@@ -35,8 +35,9 @@ def page_summary_body():
         f"[Kaggle](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data)"
         f" where it is hosted by Code Institute.\n"
         f"* The dataset represents a record of approx. 1500 real estate "
-        f" sales in Ames, Iowa. Each record contains 23 features that"
-        f" characterize the home, it also contains the sale price."
+        f" sales in Ames, Iowa. Each record contains 23 features indicating"
+        f" house profile, such as Floor Area, Basement, Garage, Kitchen, Lot,"
+        f" Porch, Wood Deck, and Year Built, it also contains the sale price."
         f" The features are extensive, so please visit the site for more"
         f" information.")
 

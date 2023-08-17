@@ -26,10 +26,23 @@ def page_sale_price_predictor_body():
 
     st.write("### Sale Price Predictor Interface")
     st.info(
-        f"* The client is interested in determining the likely sale price of a"
+        f" The client is interested in determining the likely sale price of a"
         f" home in Ames, Iowa. The price prediction will be based on various "
-        f" features of the property in question, which the client and input"
-        f" using the selections below."
+        f" features of the property in question, which the client can input"
+        f" using the selections below. \n\n"
+        f"**Information on Categorical Features**\n\n"
+        f"* Basement Exposure: Gd - Good Exposure, Av - Average Exposure, "
+        f" Mn - Minimum Exposure, No: No Exposure, None - No Basement.\n\n"
+        f"* Basement Finish Type: GLQ - Good Living Quarters, ALQ - Average"
+        f" Living Quarters, BLQ - Below Average Living Quarters, REC - "
+        f" Average Rec Room, LwQ - Low  Quality, Unf - Unfinished, None - "
+        f" No Basement.\n\n"
+        f"* Garage Finish: Fin - Finished, RFn: Rough Finish, Unf - Unfinished"
+        f" None - No Garage.\n\n"
+        f"* Kitchen Quality: Ex - Excellent, Gd - Good, TA - Typical/Average, "
+        f" Fa: Fair, Po: Poor.\n\n"
+        f"* Overall Condition: 1 - Very Poor up to 10 - Very Excellent.\n\n"
+        f"* Overall Quality: 1 - Very Poor up to 10 - Very Excellent.\n\n"
     )
     st.write("---")
 
@@ -52,8 +65,11 @@ def page_sale_price_predictor_body():
         inherited_price_prediction = predict_sale_price(
             in_df, sale_price_features, sale_price_pipe)
         total_value = inherited_price_prediction.sum()
-        st.write("* The total value of the inherited homes is")
-        st.write(f"${total_value}")
+        total_value = float(total_value.round(1))
+        total_value = '${:,.2f}'.format(total_value)
+
+        st.write("* The total value of the inherited homes is estimated to be:")
+        st.write(f"**{total_value}**")
 
 
 def DrawInputsWidgets():
@@ -157,7 +173,7 @@ def DrawInputsWidgets():
         feature = "BsmtFinType1"
         st_widget = st.selectbox(
             label="Basement Finish Type",
-            options=df[feature].unique()
+            options=df[feature].dropna().unique()
         )
     X_live[feature] = st_widget
 
@@ -176,7 +192,7 @@ def DrawInputsWidgets():
         feature = "GarageFinish"
         st_widget = st.selectbox(
             label="Garage Finish",
-            options=df[feature].unique()
+            options=df[feature].dropna().unique()
         )
     X_live[feature] = st_widget
 
