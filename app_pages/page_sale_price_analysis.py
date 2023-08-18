@@ -1,9 +1,7 @@
 import plotly.express as px
 import numpy as np
-from feature_engine.discretisation import ArbitraryDiscretiser
 import streamlit as st
 from src.data_management import load_house_prices_data
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 import ppscore as pps
@@ -14,17 +12,16 @@ def page_sale_price_analysis_body():
 
     # load data
     df = load_house_prices_data()
-
-    # copied from *** notebook
-    vars_to_study = ['1stFlrSF', 'TotalBsmtSF',
-                     'OverallCond', 'OverallQual', 'Lot Area']
+    # The variable most strongly correlated with Sale Price/target
+    vars_to_study = ['OverallQual', 'GrLivArea', 'GarageArea', 'TotalBsmtSF']
 
     st.write("### Property Sale Price Analysis")
     st.info(
         f"* The client is interested in understanding the correlation "
-        f" between a properties attributes/features and the sale price."
+        f" between a property's attributes/features and the sale price."
         f" Therefore, the client expects data visualization of the correlated"
-        f" variables against the sale prices for illustration. \n"
+        f" variables against the sale prices for illustration "
+        f" (Business Requirement 1), \n"
     )
 
     # inspect data
@@ -32,34 +29,41 @@ def page_sale_price_analysis_body():
         st.write(
             f"* The dataset has {df.shape[0]} rows and {df.shape[1]} columns, "
             f"find below the first 10 rows.")
-
         st.write(df.head(10))
 
     st.write("---")
 
     # Correlation Study Summary
     st.write(
-        f"* A correlation study was conducted in the notebook to better understand how "
+        f"A correlation study was conducted to better understand how "
         f"the variables are correlated to Sale Price. \n"
-        f"The most correlated variable are: **{vars_to_study}**"
+        f" Below, the results from the Pearson and Spearman correlations"
+        f" are displayed in a heatmap plot. These figures show that"
+        f" the most correlated variable are: **{vars_to_study}**. \n"
+        f" Therefore, we also display scatterplots illustrating  the "
+        f" correlation of each of these variables with the Sale Price."
     )
 
-    # Text based on "02 - ***" notebook - "Conclusions and Next steps" section
     st.info(
-        f"The correlation indications and plots below interpretation converge. "
-        f"It is indicated that Sale Price correlates most strongly with "
+        f"The correlation indications and scatter plots below confirm that "
+        f" Sale Price correlates most strongly with "
         f"the following variables in order of the strength of the "
         f"correlation: \n"
-        f"* Variable 1 \n"
-        f"* Variable 2 \n"
-        f"* Variable 3 \n"
-        f"* Variable 4 \n"
+        f"* Sale Price tends to increase as Overall Quality "
+        f" (OverallQual) goes up. \n"
+        f"* Sale Price tends to increase as Groundlevel Living Area "
+        f" (GrLivArea) increases. \n"
+        f"* Sale Price tends to increase with increasing Garage Area "
+        f" (GarageArea). \n"
+        f"* Sale Price tends to increase with an increase in Total "
+        f" Basement Area (TotalBsmtSF). \n"
     )
 
-    # Code copied from "02 - ***" notebook - "EDA on selected variables" section
-    # df_eda = df.filter(vars_to_study + ['Churn'])
-
     # Correlation plots adapted from the Data Cleaning Notebook
+    if st.checkbox("Variable Correlation with Sale Price Plots"):
+        correlation_to_sale_price_hist(df, vars_to_study)
+        # correlation_to_sale_price_scat(df, vars_to_study)
+
     if st.checkbox("Pearson Correlation"):
         calc_display_pearson_corr(df)
 
@@ -69,30 +73,57 @@ def page_sale_price_analysis_body():
     if st.checkbox("Predictive Power Score"):
         calc_display_pps_matrix(df)
 
-    if st.checkbox("Variable Correlation Plots"):
-        st.write("Correlation Plots for the variable with the strongest correlations")
+
+def correlation_to_sale_price_hist(df, vars_to_study):
+    """ Display correlation plot between variables and sale price """
+    target_var = 'SalePrice'
+    for col in vars_to_study:
+        fig, axes = plt.subplots(figsize=(8, 5))
+        axes = sns.histplot(data=df, x=col, y=target_var)
+        plt.title(f"{col}", fontsize=20, y=1.05)
+        st.pyplot(fig)
+        st.write("\n\n")
 
 
-def calc_display_spearman_corr(df):
-    df_corr_spearman = df.corr(method="spearman")
-
-    st.write("*** Heatmap: Spearman Correlation ***")
-    st.write("It evaluates monotonic relationship \n")
-    heatmap_corr(df=df_corr_spearman, threshold=0.3,
-                 figsize=(12, 10), font_annot=10)
+def correlation_to_sale_price_scat(df, vars_to_study):
+    """  scatterplots of variables vs SalePrice """
+    target_var = 'SalePrice'
+    for col in vars_to_study:
+        fig, axes = plt.subplots(figsize=(12, 5))
+        axes = sns.scatterplot(data=df, x=col, y=target_var)
+        plt.xticks(rotation=90)
+        plt.title(f"{col}", fontsize=20, y=1.05)
+        st.pyplot(fig)
+        print("\n\n")
 
 
 def calc_display_pearson_corr(df):
+    """ Calcuate and display Pearson Correlation """
     df_corr_pearson = df.corr(method="pearson")
 
     st.write("*** Heatmap: Pearson Correlation ***")
     st.write(
-        "It evaluates the linear relationship between two continuous variables \n")
-    heatmap_corr(df=df_corr_pearson, threshold=0.3,
+        f"It evaluates the linear relationship between "
+        f" two continuous variables, that is how closely the correlation"
+        f" between the variable can be represented by a straight line. \n")
+    heatmap_corr(df=df_corr_pearson, threshold=0.6,
+                 figsize=(12, 10), font_annot=10)
+
+
+def calc_display_spearman_corr(df):
+    """ Calcuate and display Spearman Correlation """
+    df_corr_spearman = df.corr(method="spearman")
+
+    st.write("*** Heatmap: Spearman Correlation ***")
+    st.write(
+        f"It evaluates monotonic relationship, that is a relationship "
+        f"where the variable behave similarly but not necessarily linearly.\n")
+    heatmap_corr(df=df_corr_spearman, threshold=0.6,
                  figsize=(12, 10), font_annot=10)
 
 
 def calc_display_pps_matrix(df):
+    """ Calcuate and display Predictive Power Score """
     pps_matrix_raw = pps.matrix(df)
     pps_matrix = pps_matrix_raw.filter(['x', 'y', 'ppscore']).pivot(
         columns='x', index='y', values='ppscore')
@@ -102,34 +133,40 @@ def calc_display_pps_matrix(df):
     # st.write(pps_score_stats.round(3))
 
     st.write("*** Heatmap: Power Predictive Score (PPS) ***")
-    st.write(f"PPS detects linear or non-linear relationships between two columns.\n"
-             f"The score ranges from 0 (no predictive power) to 1 (perfect predictive power) \n")
-    heatmap_pps(df=pps_matrix, threshold=0.2, figsize=(12, 10), font_annot=10)
+    st.write(
+        f"PPS detects linear or non-linear relationships "
+        f"between two columns.\n"
+        f"The score ranges from 0 (no predictive power) to 1 "
+        f"(perfect predictive power) \n")
+    heatmap_pps(df=pps_matrix, threshold=0.15, figsize=(12, 10), font_annot=10)
 
 
 def heatmap_corr(df, threshold, figsize=(20, 12), font_annot=8):
+    """ Heatmap for correlations from CI template"""
     if len(df.columns) > 1:
         mask = np.zeros_like(df, dtype=bool)
         mask[np.triu_indices_from(mask)] = True
         mask[abs(df) < threshold] = True
-
         fig, axes = plt.subplots(figsize=figsize)
-        sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
-                    mask=mask, cmap='viridis', annot_kws={"size": font_annot}, ax=axes,
-                    linewidth=0.5
-                    )
+        axes = sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
+                           mask=mask, cmap='viridis',
+                           annot_kws={"size": font_annot},
+                           ax=axes, linewidth=0.5
+                           )
         axes.set_yticklabels(df.columns, rotation=0)
         plt.ylim(len(df.columns), 0)
         st.pyplot(fig)
 
 
 def heatmap_pps(df, threshold, figsize=(20, 12), font_annot=8):
+    """ Heatmap for predictive power score from CI template"""
     if len(df.columns) > 1:
         mask = np.zeros_like(df, dtype=bool)
         mask[abs(df) < threshold] = True
-        fig, ax = plt.subplots(figsize=figsize)
-        ax = sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
-                         mask=mask, cmap='rocket_r', annot_kws={"size": font_annot},
-                         linewidth=0.05, linecolor='grey')
+        fig, axes = plt.subplots(figsize=figsize)
+        axes = sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
+                           mask=mask, cmap='rocket_r',
+                           annot_kws={"size": font_annot},
+                           linewidth=0.05, linecolor='grey')
         plt.ylim(len(df.columns), 0)
         st.pyplot(fig)

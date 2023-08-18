@@ -13,7 +13,7 @@ app = MultiPage(app_name="Heritage Housing Sale Price Predictor")
 
 # Add your app pages here using .add_page()
 app.add_page("Project Summary", page_summary_body)
-app.add_page("Sale Price Analysis", page_sale_price_analysis_body)
+app.add_page("Sale Price Correlation Analysis", page_sale_price_analysis_body)
 app.add_page("Sale Price Predictor", page_sale_price_predictor_body)
 app.add_page("Project Hypothesis and Validation", page_project_hypothesis_body)
 app.add_page("ML: Price Prediction", page_predict_price_ml_body)
