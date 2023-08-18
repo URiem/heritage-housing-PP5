@@ -6,6 +6,7 @@ from src.data_management import load_house_prices_data
 
 import matplotlib.pyplot as plt
 import seaborn as sns
+import ppscore as pps
 sns.set_style("whitegrid")
 
 
@@ -58,73 +59,77 @@ def page_sale_price_analysis_body():
     # Code copied from "02 - ***" notebook - "EDA on selected variables" section
     # df_eda = df.filter(vars_to_study + ['Churn'])
 
-    # Individual plots per variable
+    # Correlation plots adapted from the Data Cleaning Notebook
     if st.checkbox("Pearson Correlation"):
-        st.write("Pearson Correlation Plot")
-        #   churn_level_per_variable(df_eda)
+        calc_display_pearson_corr(df)
 
     if st.checkbox("Spearman Correlation"):
-        st.write("Spearman correlation Plot")
-        #   churn_level_per_variable(df_eda)
+        calc_display_spearman_corr(df)
 
     if st.checkbox("Predictive Power Score"):
-        st.write("PPS Plot")
-        #   churn_level_per_variable(df_eda)
+        calc_display_pps_matrix(df)
 
-        # Parallel plot
-    if st.checkbox("Correlation Plots"):
-        st.write("Several correlation Plots")
-        # parallel_plot_churn(df_eda)
+    if st.checkbox("Variable Correlation Plots"):
+        st.write("Correlation Plots for the variable with the strongest correlations")
 
-        # function created using "02 - Churned Customer Study" notebook code - "Variables Distribution by Churn" section
-        # def churn_level_per_variable(df_eda):
-        #     target_var = 'Churn'
 
-        #     for col in df_eda.drop([target_var], axis=1).columns.to_list():
-        #         if df_eda[col].dtype == 'object':
-        #             plot_categorical(df_eda, col, target_var)
-        #         else:
-        #             plot_numerical(df_eda, col, target_var)
+def calc_display_spearman_corr(df):
+    df_corr_spearman = df.corr(method="spearman")
 
-        # code copied from "02 - Churned Customer Study" notebook - "Variables Distribution by Churn" section
-        # def plot_categorical(df, col, target_var):
-        #     fig, axes = plt.subplots(figsize=(12, 5))
-        #     sns.countplot(data=df, x=col, hue=target_var,
-        #                   order=df[col].value_counts().index)
-        #     plt.xticks(rotation=90)
-        #     plt.title(f"{col}", fontsize=20, y=1.05)
-        #     st.pyplot(fig)  # st.pyplot() renders image, in notebook is plt.show()
+    st.write("*** Heatmap: Spearman Correlation ***")
+    st.write("It evaluates monotonic relationship \n")
+    heatmap_corr(df=df_corr_spearman, threshold=0.3,
+                 figsize=(12, 10), font_annot=10)
 
-        # code copied from "02 - Churned Customer Study" notebook - "Variables Distribution by Churn" section
-        # def plot_numerical(df, col, target_var):
-        #     fig, axes = plt.subplots(figsize=(8, 5))
-        #     sns.histplot(data=df, x=col, hue=target_var, kde=True, element="step")
-        #     plt.title(f"{col}", fontsize=20, y=1.05)
-        #     st.pyplot(fig)  # st.pyplot() renders image, in notebook is plt.show()
 
-        # function created using "02 - Churned Customer Study" notebook code - Parallel Plot section
-        # def parallel_plot_churn(df_eda):
+def calc_display_pearson_corr(df):
+    df_corr_pearson = df.corr(method="pearson")
 
-        #     # hard coded from "disc.binner_dict_['tenure']"" result,
-        #     tenure_map = [-np.Inf, 6, 12, 18, 24, np.Inf]
-        #     # found at "02 - Churned Customer Study" notebook
-        #     # under "Parallel Plot" section
-        #     disc = ArbitraryDiscretiser(binning_dict={'tenure': tenure_map})
-        #     df_parallel = disc.fit_transform(df_eda)
+    st.write("*** Heatmap: Pearson Correlation ***")
+    st.write(
+        "It evaluates the linear relationship between two continuous variables \n")
+    heatmap_corr(df=df_corr_pearson, threshold=0.3,
+                 figsize=(12, 10), font_annot=10)
 
-        #     n_classes = len(tenure_map) - 1
-        #     classes_ranges = disc.binner_dict_['tenure'][1:-1]
-        #     LabelsMap = {}
-        #     for n in range(0, n_classes):
-        #         if n == 0:
-        #             LabelsMap[n] = f"<{classes_ranges[0]}"
-        #         elif n == n_classes-1:
-        #             LabelsMap[n] = f"+{classes_ranges[-1]}"
-        #         else:
-        #             LabelsMap[n] = f"{classes_ranges[n-1]} to {classes_ranges[n]}"
 
-        #     df_parallel['tenure'] = df_parallel['tenure'].replace(LabelsMap)
-        #     fig = px.parallel_categories(
-        #         df_parallel, color="Churn", width=750, height=500)
-        #     # we use st.plotly_chart() to render, in notebook is fig.show()
-        #     st.plotly_chart(fig)
+def calc_display_pps_matrix(df):
+    pps_matrix_raw = pps.matrix(df)
+    pps_matrix = pps_matrix_raw.filter(['x', 'y', 'ppscore']).pivot(
+        columns='x', index='y', values='ppscore')
+
+    # pps_score_stats = pps_matrix_raw.query(
+    #     "ppscore < 1").filter(['ppscore']).describe().T
+    # st.write(pps_score_stats.round(3))
+
+    st.write("*** Heatmap: Power Predictive Score (PPS) ***")
+    st.write(f"PPS detects linear or non-linear relationships between two columns.\n"
+             f"The score ranges from 0 (no predictive power) to 1 (perfect predictive power) \n")
+    heatmap_pps(df=pps_matrix, threshold=0.2, figsize=(12, 10), font_annot=10)
+
+
+def heatmap_corr(df, threshold, figsize=(20, 12), font_annot=8):
+    if len(df.columns) > 1:
+        mask = np.zeros_like(df, dtype=bool)
+        mask[np.triu_indices_from(mask)] = True
+        mask[abs(df) < threshold] = True
+
+        fig, axes = plt.subplots(figsize=figsize)
+        sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
+                    mask=mask, cmap='viridis', annot_kws={"size": font_annot}, ax=axes,
+                    linewidth=0.5
+                    )
+        axes.set_yticklabels(df.columns, rotation=0)
+        plt.ylim(len(df.columns), 0)
+        st.pyplot(fig)
+
+
+def heatmap_pps(df, threshold, figsize=(20, 12), font_annot=8):
+    if len(df.columns) > 1:
+        mask = np.zeros_like(df, dtype=bool)
+        mask[abs(df) < threshold] = True
+        fig, ax = plt.subplots(figsize=figsize)
+        ax = sns.heatmap(df, annot=True, xticklabels=True, yticklabels=True,
+                         mask=mask, cmap='rocket_r', annot_kws={"size": font_annot},
+                         linewidth=0.05, linecolor='grey')
+        plt.ylim(len(df.columns), 0)
+        st.pyplot(fig)
