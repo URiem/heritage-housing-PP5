@@ -25,9 +25,15 @@ def page_sale_price_predictor_body():
     )
 
     st.write("### Sale Price Predictor Interface")
+    st.success(
+        f"* The client is interested in predicting the potential sale "
+        f" prices"
+        f" for properties in Ames, Iowa, and specifically, she wants to"
+        f" determine a potential value for the properties she inherited "
+        f" (Business Requirement 2). \n"
+    )
     st.info(
-        f" The client is interested in determining the likely sale price of a"
-        f" home in Ames, Iowa. The price prediction will be based on various "
+        f"The price prediction will be based on various "
         f" features of the property in question, which the client can input"
         f" using the selections below. \n\n"
         f"**Information on Categorical Features**\n\n"

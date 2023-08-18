@@ -16,7 +16,7 @@ def page_sale_price_analysis_body():
     vars_to_study = ['OverallQual', 'GrLivArea', 'GarageArea', 'TotalBsmtSF']
 
     st.write("### Property Sale Price Analysis")
-    st.info(
+    st.success(
         f"* The client is interested in understanding the correlation "
         f" between a property's attributes/features and the sale price."
         f" Therefore, the client expects data visualization of the correlated"
@@ -25,7 +25,7 @@ def page_sale_price_analysis_body():
     )
 
     # inspect data
-    if st.checkbox("Inspect Sale Price Data"):
+    if st.checkbox("Inspect Sale Price Dataset"):
         st.write(
             f"* The dataset has {df.shape[0]} rows and {df.shape[1]} columns, "
             f"find below the first 10 rows.")
@@ -60,7 +60,7 @@ def page_sale_price_analysis_body():
     )
 
     # Correlation plots adapted from the Data Cleaning Notebook
-    if st.checkbox("Variable Correlation with Sale Price Plots"):
+    if st.checkbox("Correlation Plots of Variables vs Sale Price"):
         correlation_to_sale_price_hist(df, vars_to_study)
         # correlation_to_sale_price_scat(df, vars_to_study)
 

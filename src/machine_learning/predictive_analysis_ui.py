@@ -25,7 +25,9 @@ def predict_sale_price(X_live, property_features, sale_price_pipeline):
         st.write(statement)
         st.write(f"**{price}**")
     else:
-        st.write(statement)
+        st.write(
+            f"* Given the features provided for the inherited properties, "
+            f" the model has predicted sale values of:")
         st.write(sale_price_prediction)
 
     return sale_price_prediction

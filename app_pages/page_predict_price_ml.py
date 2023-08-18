@@ -29,16 +29,16 @@ def page_predict_price_ml_body():
 
     st.write("## ML Pipeline: Predict Property Sale Price")
     # display pipeline training summary conclusions
-    st.info(
-        f"* A Regressor model was trained to predict the sale price of"
+    st.success(
+        f" A Regressor model was trained to predict the sale price of"
         f" properties in Ames, Iowa. "
         f" The initial data set contained 23 Features and SalePrice as "
         f" the target."
-        f" Two features were dropped due to around 90% of missing data."
+        f" Two features were dropped due to around 90% of data missing."
         f" Feature engineering was carried out on the remaining data. "
         f" The model was tuned using a hyperparameter search and was found to "
-        f" **meet the project requirement**: 0.8 of R2 Score on "
-        f" train and test sets. ")
+        f" **meet the project requirement**: and R2 Score of 0.8 or better on "
+        f" both train and test sets. ")
     st.write("---")
 
     # show pipeline steps
