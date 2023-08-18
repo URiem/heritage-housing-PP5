@@ -132,7 +132,7 @@ def calc_display_pps_matrix(df):
     #     "ppscore < 1").filter(['ppscore']).describe().T
     # st.write(pps_score_stats.round(3))
 
-    st.write("*** Heatmap: Power Predictive Score (PPS) ***")
+    st.write("*** Heatmap: Predictive Power Score (PPS) ***")
     st.write(
         f"PPS detects linear or non-linear relationships "
         f"between two columns.\n"
