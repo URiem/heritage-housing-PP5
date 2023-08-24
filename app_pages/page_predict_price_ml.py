@@ -11,11 +11,11 @@ from src.machine_learning.evaluate_regression import (
 def page_predict_price_ml_body():
 
     # load regression pipeline files
-    version = 'v1'
+    version = 'v2'
     sale_price_pipe = load_pkl_file(
         f"outputs/ml_pipeline/predict_sale_price/{version}/regression_pipeline.pkl")
     sale_price_feat_importance = plt.imread(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/feat_importance.png")
+        f"outputs/ml_pipeline/predict_sale_price/{version}/features_importance.png")
     model_perform_img = plt.imread(
         f"outputs/ml_pipeline/predict_sale_price/{version}/model_image.png")
     X_train = pd.read_csv(
