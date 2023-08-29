@@ -220,38 +220,38 @@ This section contains information on resources and technologies used to complete
 
 ### Development and Deployment
 
-* GitHub was used to create the project repository, story project files and record commits.
-* Code Anywhere was used as the development environment.
-* Jupyter Notebooks were used to analyse and engineer the data, and develop and evaluate the model pipeline.
-  * In the terminal type <code>jupyter notebook --NotebookApp.token='' --NotebookApp.password=''</code> to start the jupyter server.
-* Heroku was used to deploy the project.
-* Kaggle was used to access the dataset.
-* Streamlit was used to develop the online app interface.
+- GitHub was used to create the project repository, story project files and record commits.
+- Code Anywhere was used as the development environment.
+- Jupyter Notebooks were used to analyse and engineer the data, and develop and evaluate the model pipeline.
+  - In the terminal type `jupyter notebook --NotebookApp.token='' --NotebookApp.password=''` to start the jupyter server.
+- Heroku was used to deploy the project.
+- Kaggle was used to access the dataset.
+- Streamlit was used to develop the online app interface.
 
 ### Main Data Analysis and Machine Learning Libraries
 
-* Numpy was used for mathematical operations for examples determining means, modes, and standard deviations.
-* Pandas was used for reading and writing data files, inspecting, creating and manipulating series and dataframes.
-* ydata_profiling was used to create an extensive Profile Report of the dataset.
-* PPScore was used to determine the predictive power score of the data features.
-* MatPlotLib and Seaborn were used for constructing plots to visualize the data analysis, specifically the heatmaps, correlation plots and historgram of feature importance.
-* Feature Engine was used for various data cleaning and preparation tasks:
-  * Dropping Features, and Imputation of missing variables.
-  * Ordinal Encoding, Numerical Transformations, Assessment of outliers, and Smart Correlation Assessment of variables.
-* SciKit Learn was used for many machine learning tasks:
-  * splitting train and test sets.
-  * feature processing and selection.
-  * gridsearch to determine the optimal regression model.
-  * gridsearch to determine the optimal hyperparameters.
-  * evaluation  of the model using r2_score.
-  * Principal Component Analysis and evaluation.
-* XGBoost for the XGBoostRegressor algorithm.
+- Numpy was used for mathematical operations for examples determining means, modes, and standard deviations.
+- Pandas was used for reading and writing data files, inspecting, creating and manipulating series and dataframes.
+- ydata_profiling was used to create an extensive Profile Report of the dataset.
+- PPScore was used to determine the predictive power score of the data features.
+- MatPlotLib and Seaborn were used for constructing plots to visualize the data analysis, specifically the heatmaps, correlation plots and historgram of feature importance.
+- Feature Engine was used for various data cleaning and preparation tasks:
+  - Dropping Features, and Imputation of missing variables.
+  - Ordinal Encoding, Numerical Transformations, Assessment of outliers, and Smart Correlation Assessment of variables.
+- SciKit Learn was used for many machine learning tasks:
+  - splitting train and test sets.
+  - feature processing and selection.
+  - gridsearch to determine the optimal regression model.
+  - gridsearch to determine the optimal hyperparameters.
+  - evaluation  of the model using r2_score.
+  - Principal Component Analysis and evaluation.
+- XGBoost for the XGBoostRegressor algorithm.
 
 ### Source of code
 
-* The CI Churnometer Walkthrough Project and the CI course content was used to source various functions and classes in the development process, such as: HyperparameterOptimizationSearch, Feature Importance analysis, evaluation of train and test sets, PPS and Correlation Analysis and plots, Missing Data Evaluation, Data Cleaning Effect, etc.
-* The CI Churnometer Walkthrough Project was also the source of the Steamlit pages where were then adapted to the app deployed in this project.
-* More generally, The walkthrough project provided a guide for the general layout and flow of the project.
+- The CI Churnometer Walkthrough Project and the CI course content was used to source various functions and classes in the development process, such as: HyperparameterOptimizationSearch, Feature Importance analysis, evaluation of train and test sets, PPS and Correlation Analysis and plots, Missing Data Evaluation, Data Cleaning Effect, etc.
+- The CI Churnometer Walkthrough Project was also the source of the Steamlit pages where were then adapted to the app deployed in this project.
+- More generally, The walkthrough project provided a guide for the general layout and flow of the project.
 
 ## Credits
 
@@ -265,11 +265,11 @@ This section contains information on resources and technologies used to complete
 
 Many thanks and appreciation go to the following sources and people:
 
-* Several past projects provided valuable additional information on how to complete a successful project:
-  * Heritage Housing Issues project by T. Hullis [Link](https://github.com/t-hullis/milestone-project-heritage-housing-issues)
-  * Exam Score Analysisy by Adam Boley [Link](https://github.com/AdamBoley/Exam-Scores-Analysis)
-  * Heritage Housing Issues project by Farid Benachenhou [Link](https://github.com/faridjos/milestone-project-heritage-housing-issues)
-* The Slack community has, as always, been invaluable in answering questions. For this project a particular thank you to Niel McEwen. As the moderator of the Predictive Analytics PP5 Slack channel he was the main person to help resolve several technical issues.
-* My mentor Precious Ijege provided great feedback on how to improve the project in our mentor meetings.
-* StackOverflow helped resolve several issues through out the project.
-* As always a big thank you to my husband, Matthew, for his unwavering support!
+- Several past projects provided valuable additional information on how to complete a successful project:
+  - Heritage Housing Issues project by T. Hullis [Link](https://github.com/t-hullis/milestone-project-heritage-housing-issues)
+  - Exam Score Analysisy by Adam Boley [Link](https://github.com/AdamBoley/Exam-Scores-Analysis)
+  - Heritage Housing Issues project by Farid Benachenhou [Link](https://github.com/faridjos/milestone-project-heritage-housing-issues)
+- The Slack community has, as always, been invaluable in answering questions. For this project a particular thank you to Niel McEwen. As the moderator of the Predictive Analytics PP5 Slack channel he was the main person to help resolve several technical issues.
+- My mentor Precious Ijege provided great feedback on how to improve the project in our mentor meetings.
+- StackOverflow helped resolve several issues through out the project.
+- As always a big thank you to my husband, Matthew, for his unwavering support!
