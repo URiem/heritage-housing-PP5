@@ -15,6 +15,7 @@
 - [Heritage Housing Issues](#heritage-housing-issues)
   - [Table of Content](#table-of-content)
   - [Introduction](#introduction)
+  - [CRISP-DM Workflow](#crisp-dm-workflow)
   - [Business Requirements](#business-requirements)
   - [Dataset Content](#dataset-content)
   - [Hypothesis and how to validate?](#hypothesis-and-how-to-validate)
@@ -46,6 +47,19 @@ The Maching Learning and Data Analysis toolkit is applied to a real estate data 
 
 My personal motivation for choosing this project, is that I myself inherited two properties in a small town in the US in 2011 and subsequently became licensed and worked as a real estate agent for several years in order to gain experience in the real estate market and ultimately sell the properties I had inherited.
 
+## CRISP-DM Workflow
+
+The project was developed using the Cross Industry Standard Process for Data Mining. This follows several iterations over well defined steps:
+
+1. Business Understanding - This incorporates an extensive discussion with the client and their expectations as well as the development of acceptance criteria. These are layed out in the [Business Requirements](#business-requirements) below.
+2. Data Understanding - The data needed to achieve the business requirements must be identified and understood. Are the data available to answer the business requirements? An initial statistical analysis helps to determine whether the data available are adequate to answer the business requirements. This task is carried out in the Data Cleaning Notebook.
+3. Data Preparation - Clean and impute data, carry out feature engineering, such as transformations or scaling, reformat data if needed. This step is very important to ensure the most effective and accurate modelling outcome. This is carried out in the Data Cleaning and Feature Engineering Notebooks.
+4. Modelling - Determine the model algorithms to be used. Split the data into train and test sets. Use train sets to validate various algorithms and tune them using a hyperparamter search. This is carried out in the ModelEvalRegression_v1 Notebook.
+5. Evaluation - Use the test set to evaluate the model performance. Match these with the business acceptance criteria.  This is carried out in the ModelEvalRegression_v1 and ModelEvalRegression_v2 Notebooks.
+6. Deployment - Develop the streamlit app that will satisfy the business requirements determined in collaboration with the client and deploy the app online. The app is deployed in Heroku and the process is described in the [Deployment](#deployment) section below.
+
+These steps can be matched up nicely to 6 Epics in the Agile development process. As we move along the pipeline of the development process we may flow back and forth between stages/epics of the development process as we learn new insight and have to revisit previous step in order to refine the development. While ultimately moving towards the final delivery of a product that satisfies the users/clients requirements.
+
 ## Business Requirements
 
 A client who has received an inheritance from a deceased great-grandfather located in Ames, Iowa, has requested help in maximising the sales price for the inherited properties.
@@ -59,6 +73,12 @@ The client is interested in the following outcomes:
 2. Predicting the house sale price from her four inherited houses and any other house in Ames, Iowa, based on the most important features of the homes. The predictive model should aim to acchieve an R2 value of 0.8 or higher.
 
 3. Delivery of the final product in the form of a deployed app that is easily accessible online and userfriendly.  
+
+These requirements can also be viewed as the user stories of the client/end user.
+
+1. As an end user, I want to be able to discover how features of a home correlate with the sale price, so that I can gain insight into the importance of a homes features in determining the sale price.
+2. As an end user, I want to be able to determine the likely sale price of a home based on certain features, so that I can gain insight into the likely values of a given home in the area.
+3. As an end user, I want to be able to access the required information easily online, so that I can find relevant information any time in a user friendly fashion.
 
 ## Dataset Content
 
