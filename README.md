@@ -34,8 +34,8 @@
   - [Technologies](#technologies)
     - [Development and Deployment](#development-and-deployment)
     - [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
-    - [Source of code](#source-of-code)
   - [Credits](#credits)
+    - [Sources of code](#sources-of-code)
     - [Media](#media)
   - [Acknowledgements](#acknowledgements)
 
@@ -247,13 +247,13 @@ This section contains information on resources and technologies used to complete
   - Principal Component Analysis and evaluation.
 - XGBoost for the XGBoostRegressor algorithm.
 
-### Source of code
+## Credits
+
+### Sources of code
 
 - The CI Churnometer Walkthrough Project and the CI course content was used to source various functions and classes in the development process, such as: HyperparameterOptimizationSearch, Feature Importance analysis, evaluation of train and test sets, PPS and Correlation Analysis and plots, Missing Data Evaluation, Data Cleaning Effect, etc.
 - The CI Churnometer Walkthrough Project was also the source of the Steamlit pages where were then adapted to the app deployed in this project.
 - More generally, The walkthrough project provided a guide for the general layout and flow of the project.
-
-## Credits
 
 ### Media
 
