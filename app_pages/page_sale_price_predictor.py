@@ -33,21 +33,18 @@ def page_sale_price_predictor_body():
         f" (Business Requirement 2). \n"
     )
     st.info(
-        f"The price prediction will be based on various "
+        f"The price prediction will be based on four "
         f" features of the property in question, which the client can input"
-        f" using the selections below. \n\n"
-        f"**Information on Categorical Features**\n\n"
-        f"* Basement Exposure: Gd - Good Exposure, Av - Average Exposure, "
-        f" Mn - Minimum Exposure, No: No Exposure, None - No Basement.\n\n"
-        f"* Basement Finish Type: GLQ - Good Living Quarters, ALQ - Average"
-        f" Living Quarters, BLQ - Below Average Living Quarters, REC - "
-        f" Average Rec Room, LwQ - Low  Quality, Unf - Unfinished, None - "
-        f" No Basement.\n\n"
-        f"* Garage Finish: Fin - Finished, RFn: Rough Finish, Unf - Unfinished"
-        f" None - No Garage.\n\n"
-        f"* Kitchen Quality: Ex - Excellent, Gd - Good, TA - Typical/Average, "
-        f" Fa: Fair, Po: Poor.\n\n"
-        f"* Overall Condition: 1 - Very Poor up to 10 - Very Excellent.\n\n"
+        f" using the selections below. These features were identified by"
+        f" the machine learning model as the best features to predict Sale "
+        f" Price. They are similar to, but may differ from, the variables "
+        f" identified as most correlated in the initial data analysis. This "
+        f" is because the model will carry out more complex analysis on the "
+        f" variables behind the scenes and identify the best variables to use"
+        f" for the prediction of the Sale Price. More information on the "
+        f" machine learning model and feature importance can be found on the "
+        f" **ML: Price Prediction** page. \n\n"
+        f"**Information on categorical features used in the prediction**\n\n"
         f"* Overall Quality: 1 - Very Poor up to 10 - Very Excellent.\n\n"
     )
     st.write("---")
@@ -61,7 +58,7 @@ def page_sale_price_predictor_body():
 
     st.write("---")
 
-    st.write("## Price prediction for the clients inherited properties:")
+    st.write("### Price prediction for the clients inherited properties:")
     in_df = load_inherited_house_data()
     in_df = in_df.filter(sale_price_features)
 

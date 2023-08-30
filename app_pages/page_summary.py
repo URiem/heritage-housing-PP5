@@ -16,8 +16,8 @@ def page_summary_body():
     # text based on README file - "Dataset Content" section
     st.info(
         f"**Project Purpose and Motivation**\n\n"
-        f" The general pupose of this project is to provide a tool with which"
-        f" a client can predict the potential sale price of a property in"
+        f" The general pupose of this project is to provide a tool that allows"
+        f" a client to predict the potential sale price of a property in"
         f" Ames, Iowa, by providing detailed and typical information on the"
         f" real estate in question.\n\n"
         f" Specifically, a client has requested this app in order"
@@ -67,7 +67,11 @@ def page_summary_body():
     st.write(
         f"* For additional information on this project please consult the "
         f"[README](https://github.com/URiem/heritage-housing-PP5/tree/main)"
-        f" file for this project.\n"
+        f" file for this project hosted on GitHub.\n"
+        f"* The projecct was developed by Ulrike Riemenschneider. To find out"
+        f" more information about the developer, please visit "
+        f" [LinkedIn](https://www.linkedin.com/in/ulrikeseekingopportunities/)"
+        f" or [GitHub](https://github.com/URiem). \n"
         f"* For additional information on Ames, Iowa, home of Iowa State"
         f" University and the Iowa State Cyclones, visit "
         f"[Wikipedia](https://en.wikipedia.org/wiki/Ames,_Iowa).")

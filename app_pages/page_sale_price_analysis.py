@@ -30,9 +30,25 @@ def page_sale_price_analysis_body():
             f"* The dataset has {df.shape[0]} rows and {df.shape[1]} columns, "
             f"find below the first 10 rows.")
         st.write(df.head(10))
+        st.write(
+            f"**Information on Categorical Features**\n\n"
+            f"* Basement Exposure: Gd - Good Exposure, Av - Average Exposure, "
+            f" Mn - Minimum Exposure, No: No Exposure, None - No Basement.\n\n"
+            f"* Basement Finish Type: GLQ - Good Living Quarters, ALQ - Average"
+            f" Living Quarters, BLQ - Below Average Living Quarters, REC - "
+            f" Average Rec Room, LwQ - Low  Quality, Unf - Unfinished, None - "
+            f" No Basement.\n\n"
+            f"* Garage Finish: Fin - Finished, RFn: Rough Finish, Unf - Unfinished"
+            f" None - No Garage.\n\n"
+            f"* Kitchen Quality: Ex - Excellent, Gd - Good, TA - Typical/Average, "
+            f" Fa: Fair, Po: Poor.\n\n"
+            f"* Overall Condition: 1 - Very Poor up to 10 - Very Excellent.\n\n"
+            f"* Overall Quality: 1 - Very Poor up to 10 - Very Excellent.\n\n"
+        )
 
     st.write("---")
 
+    st.write("### Correlation Study")
     # Correlation Study Summary
     st.write(
         f"A correlation study was conducted to better understand how "
@@ -45,7 +61,8 @@ def page_sale_price_analysis_body():
     )
 
     st.info(
-        f"The correlation indications and scatter plots below confirm that "
+        f"*** Correlation Scatterplots *** \n\n"
+        f"The correlation indicators below confirm that "
         f" Sale Price correlates most strongly with "
         f"the following variables in order of the strength of the "
         f"correlation: \n"
@@ -64,11 +81,41 @@ def page_sale_price_analysis_body():
         correlation_to_sale_price_hist(df, vars_to_study)
         # correlation_to_sale_price_scat(df, vars_to_study)
 
+    st.info(
+        f"*** Heatmap: Pearson Correlation *** \n\n"
+        f"The Pearson Correlation evaluates the linear relationship between "
+        f" two continuous variables, that is how closely the correlation"
+        f" between the variable can be represented by a straight line. \n"
+        f" The last line of the heatmap shows the variables on the x-axis"
+        f" which have a linear correlation with the Sale Price "
+        f" of more than 0.6. ")
+
     if st.checkbox("Pearson Correlation"):
         calc_display_pearson_corr(df)
 
+    st.info(
+        f"*** Heatmap: Spearman Correlation ***  \n\n"
+        f"The Spearman correlation evaluates monotonic relationship, "
+        f"that is a relationship "
+        f"where the variables behave similarly but not necessarily linearly.\n"
+        f" As with the Pearson heatmap, the last line shows the variables"
+        f" on the x-axis, that have a correlation of 0.6 or more with"
+        f" with the Sale Price.")
+
     if st.checkbox("Spearman Correlation"):
         calc_display_spearman_corr(df)
+
+    st.info(
+        f"*** Heatmap: Predictive Power Score (PPS) ***  \n\n"
+        f"The PPS detects linear or non-linear relationships "
+        f"between two variables.\n"
+        f"The score ranges from 0 (no predictive power) to 1 "
+        f"(perfect predictive power). \n"
+        f" To use the plot, find the row on the y-axis labeled 'SalePrice' "
+        f" then follow along the row and see the variables, labeled on the "
+        f" x-axis, with a pps of more"
+        f" than 0.2 expressed on the plot. Overall Quality (OverallQual)"
+        f" has the highest predictive power for the Sale Price target.")
 
     if st.checkbox("Predictive Power Score"):
         calc_display_pps_matrix(df)
@@ -100,12 +147,6 @@ def correlation_to_sale_price_scat(df, vars_to_study):
 def calc_display_pearson_corr(df):
     """ Calcuate and display Pearson Correlation """
     df_corr_pearson = df.corr(method="pearson")
-
-    st.write("*** Heatmap: Pearson Correlation ***")
-    st.write(
-        f"It evaluates the linear relationship between "
-        f" two continuous variables, that is how closely the correlation"
-        f" between the variable can be represented by a straight line. \n")
     heatmap_corr(df=df_corr_pearson, threshold=0.6,
                  figsize=(12, 10), font_annot=10)
 
@@ -113,11 +154,6 @@ def calc_display_pearson_corr(df):
 def calc_display_spearman_corr(df):
     """ Calcuate and display Spearman Correlation """
     df_corr_spearman = df.corr(method="spearman")
-
-    st.write("*** Heatmap: Spearman Correlation ***")
-    st.write(
-        f"It evaluates monotonic relationship, that is a relationship "
-        f"where the variable behave similarly but not necessarily linearly.\n")
     heatmap_corr(df=df_corr_spearman, threshold=0.6,
                  figsize=(12, 10), font_annot=10)
 
@@ -131,13 +167,6 @@ def calc_display_pps_matrix(df):
     # pps_score_stats = pps_matrix_raw.query(
     #     "ppscore < 1").filter(['ppscore']).describe().T
     # st.write(pps_score_stats.round(3))
-
-    st.write("*** Heatmap: Predictive Power Score (PPS) ***")
-    st.write(
-        f"PPS detects linear or non-linear relationships "
-        f"between two columns.\n"
-        f"The score ranges from 0 (no predictive power) to 1 "
-        f"(perfect predictive power) \n")
     heatmap_pps(df=pps_matrix, threshold=0.15, figsize=(12, 10), font_annot=10)
 
 
