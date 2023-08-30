@@ -32,12 +32,12 @@ def page_predict_price_ml_body():
     st.success(
         f" A Regressor model was trained to predict the sale price of"
         f" properties in Ames, Iowa. "
-        f" The initial data set contained 23 Features and SalePrice as "
+        f" The initial data set contained 23 features and 'SalePrice' as "
         f" the target."
-        f" Two features were dropped due to around 90% of data missing."
+        f" Two features were dropped due to around 90% of data points missing."
         f" Feature engineering was carried out on the remaining data. "
         f" The model was tuned using a hyperparameter search and was found to "
-        f" **meet the project requirement**: and R2 Score of 0.8 or better on "
+        f" **meet the project requirement** with an R2 Score of 0.8 or better on "
         f" both train and test sets. ")
     st.write("---")
 
@@ -50,6 +50,14 @@ def page_predict_price_ml_body():
     st.write("### The features the model was trained and their importance.")
     st.write(X_train.columns.to_list())
     st.image(sale_price_feat_importance)
+
+    st.write(
+        f"The model was ultimately trained on four features: \n"
+        f"* Overall Quality (OverallQual) \n"
+        f"* Total Basement Area in squarefeet (TotalBsmtSF) \n"
+        f"* 2nd Floor Area in squarefeet (2ndFlrSF) \n"
+        f"* Garage Area in squarefeet (GarageArea) \n"
+    )
     st.write("---")
 
     # evaluate performance on both sets

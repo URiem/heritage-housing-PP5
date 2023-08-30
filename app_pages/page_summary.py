@@ -1,5 +1,6 @@
 import streamlit as st
 import matplotlib.pyplot as plt
+import pandas as pd
 
 
 def page_summary_body():
@@ -68,12 +69,16 @@ def page_summary_body():
         f"* For additional information on this project please consult the "
         f"[README](https://github.com/URiem/heritage-housing-PP5/tree/main)"
         f" file for this project hosted on GitHub.\n"
-        f"* The projecct was developed by Ulrike Riemenschneider. To find out"
+        f"* The project was developed by Ulrike Riemenschneider. To find out"
         f" more information about the developer, please visit "
         f" [LinkedIn](https://www.linkedin.com/in/ulrikeseekingopportunities/)"
         f" or [GitHub](https://github.com/URiem). \n"
         f"* For additional information on Ames, Iowa, home of Iowa State"
         f" University and the Iowa State Cyclones, visit "
         f"[Wikipedia](https://en.wikipedia.org/wiki/Ames,_Iowa).")
+
+    d = {'lat': [42.0308], 'lon': [-93.6319]}
+    df_ames = pd.DataFrame(data=d)
+    st.map(data=df_ames, zoom=11)
 
     st.image(image_isu, caption='Iowa State Univesity - Ames, Iowa.')
