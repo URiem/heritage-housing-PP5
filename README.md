@@ -247,6 +247,9 @@ This section contains information on resources and technologies used to complete
   - Principal Component Analysis and evaluation.
 - XGBoost for the XGBoostRegressor algorithm.
 
+
+{google_docs}https://docs.google.com/spreadsheets/d/e/2PACX-1vT6yLa-Zeag5vAVtV28UMtVtsg8EwGs0E5pPQiEZCLRFInBhBuhsi8BAaPS5gmPmLVaAYe8-5Mdkbdo/pubhtml{/google_docs}
+
 ## Credits
 
 ### Sources of code
