@@ -259,7 +259,7 @@ This section contains information on resources and technologies used to complete
 
 - The image of main street Ames is from [Wikipedia](https://commons.wikimedia.org/wiki/File:Ames_Iowa_Main_Street_%28bannerportada_esvoy%29.jpg)
 
-- The images of Iowa State University was taken from [Nice.com](https://www.niche.com/colleges/iowa-state-university/)
+- The images of Iowa State University was taken from [Niche.com](https://www.niche.com/colleges/iowa-state-university/)
 
 ## Acknowledgements
 
