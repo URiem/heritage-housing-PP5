@@ -13,7 +13,8 @@ def page_sale_price_analysis_body():
     # load data
     df = load_house_prices_data()
     # The variable most strongly correlated with Sale Price/target
-    vars_to_study = ['OverallQual', 'GrLivArea', 'GarageArea', 'TotalBsmtSF']
+    vars_to_study = ['OverallQual', 'GrLivArea',
+                     'GarageArea', 'TotalBsmtSF', 'YearBuilt', '1stFlrSF']
 
     st.write("### Property Sale Price Analysis")
     st.success(
@@ -54,35 +55,16 @@ def page_sale_price_analysis_body():
         f"A correlation study was conducted to better understand how "
         f"the variables are correlated to Sale Price. \n"
         f" Below, the results from the Pearson and Spearman correlations"
-        f" are displayed in a heatmap plot. These figures show that"
+        f" are displayed in a heatmap plot. The features most correlated "
+        f" with the Sale Price are then also displayed in a bar plot "
+        f" for simplicity. These figures show that"
         f" the most correlated variable are: **{vars_to_study}**. \n"
         f" Therefore, we also display scatterplots illustrating  the "
         f" correlation of each of these variables with the Sale Price."
     )
 
     st.info(
-        f"*** Correlation Scatterplots *** \n\n"
-        f"The correlation indicators below confirm that "
-        f" Sale Price correlates most strongly with "
-        f"the following variables in order of the strength of the "
-        f"correlation: \n"
-        f"* Sale Price tends to increase as Overall Quality "
-        f" (OverallQual) goes up. \n"
-        f"* Sale Price tends to increase as Groundlevel Living Area "
-        f" (GrLivArea) increases. \n"
-        f"* Sale Price tends to increase with increasing Garage Area "
-        f" (GarageArea). \n"
-        f"* Sale Price tends to increase with an increase in Total "
-        f" Basement Area (TotalBsmtSF). \n"
-    )
-
-    # Correlation plots adapted from the Data Cleaning Notebook
-    if st.checkbox("Correlation Plots of Variables vs Sale Price"):
-        correlation_to_sale_price_hist(df, vars_to_study)
-        # correlation_to_sale_price_scat(df, vars_to_study)
-
-    st.info(
-        f"*** Heatmap: Pearson Correlation *** \n\n"
+        f"*** Heatmap and Barplot: Pearson Correlation *** \n\n"
         f"The Pearson Correlation evaluates the linear relationship between "
         f" two continuous variables, that is how closely the correlation"
         f" between the variable can be represented by a straight line. \n"
@@ -91,19 +73,51 @@ def page_sale_price_analysis_body():
         f" of more than 0.6. ")
 
     if st.checkbox("Pearson Correlation"):
-        calc_display_pearson_corr(df)
+        calc_display_pearson_corr_heat(df)
+        calc_display_pearson_corr_bar(df)
 
     st.info(
-        f"*** Heatmap: Spearman Correlation ***  \n\n"
+        f"*** Heatmap and Barplot: Spearman Correlation ***  \n\n"
         f"The Spearman correlation evaluates monotonic relationship, "
         f"that is a relationship "
         f"where the variables behave similarly but not necessarily linearly.\n"
         f" As with the Pearson heatmap, the last line shows the variables"
         f" on the x-axis, that have a correlation of 0.6 or more with"
-        f" with the Sale Price.")
+        f" with the Sale Price. These are then also presented on a barplot"
+        f" for simplicity.")
 
     if st.checkbox("Spearman Correlation"):
-        calc_display_spearman_corr(df)
+        calc_display_spearman_corr_heat(df)
+        calc_display_spearman_corr_bar(df)
+
+    st.info(
+        f"*** Correlation Scatterplots *** \n\n"
+        f"The correlation indicators above confirm that "
+        f" Sale Price correlates most strongly with "
+        f"the following variables: \n"
+        f"* Sale Price tends to increase as Overall Quality "
+        f" (OverallQual) goes up. \n"
+        f"* Sale Price tends to increase as Groundlevel Living Area "
+        f" (GrLivArea) increases. \n"
+        f"* Sale Price tends to increase with increasing Garage Area "
+        f" (GarageArea). \n"
+        f"* Sale Price tends to increase with an increase in Total "
+        f" Basement Area (TotalBsmtSF). \n"
+        f"* Sale Price tends to increase with an increase in "
+        f" Year Built (YearBuilt). \n"
+        f"* Sale Price tends to increase with an increase in "
+        f" 1st Floor Squarefootage (1stFlrSF). \n\n"
+        f"The scatterplots below illustrate the trends of the"
+        f"correlations. Each data point is also colored according"
+        f"to the Overall Quality of that data point. The"
+        f"trend that with increasing overall quality the Sale Price"
+        f"increases can be clearly seen on all plots."
+    )
+
+    # Correlation plots adapted from the Data Cleaning Notebook
+    if st.checkbox("Correlation Plots of Variables vs Sale Price"):
+        correlation_to_sale_price_hist(df, vars_to_study)
+        correlation_to_sale_price_scat(df, vars_to_study)
 
     st.info(
         f"*** Heatmap: Predictive Power Score (PPS) ***  \n\n"
@@ -136,26 +150,46 @@ def correlation_to_sale_price_scat(df, vars_to_study):
     """  scatterplots of variables vs SalePrice """
     target_var = 'SalePrice'
     for col in vars_to_study:
-        fig, axes = plt.subplots(figsize=(12, 5))
-        axes = sns.scatterplot(data=df, x=col, y=target_var)
-        plt.xticks(rotation=90)
+        fig, axes = plt.subplots(figsize=(8, 5))
+        axes = sns.scatterplot(data=df, x=col, y=target_var, hue='OverallQual')
+        # plt.xticks(rotation=90)
         plt.title(f"{col}", fontsize=20, y=1.05)
         st.pyplot(fig)
-        print("\n\n")
+        st.write("\n\n")
 
 
-def calc_display_pearson_corr(df):
+def calc_display_pearson_corr_heat(df):
     """ Calcuate and display Pearson Correlation """
     df_corr_pearson = df.corr(method="pearson")
     heatmap_corr(df=df_corr_pearson, threshold=0.6,
                  figsize=(12, 10), font_annot=10)
 
 
-def calc_display_spearman_corr(df):
+def calc_display_spearman_corr_heat(df):
     """ Calcuate and display Spearman Correlation """
     df_corr_spearman = df.corr(method="spearman")
     heatmap_corr(df=df_corr_spearman, threshold=0.6,
                  figsize=(12, 10), font_annot=10)
+
+
+def calc_display_pearson_corr_bar(df):
+    """ Calcuate and display Pearson Correlation """
+    corr_pearson = df.corr(method='pearson')['SalePrice'].sort_values(
+        key=abs, ascending=False)[1:]
+    fig, axes = plt.subplots(figsize=(6, 3))
+    axes = plt.bar(x=corr_pearson[:5].index, height=corr_pearson[:5])
+    plt.title("Pearson Correlation", fontsize=20, y=1.05)
+    st.pyplot(fig)
+
+
+def calc_display_spearman_corr_bar(df):
+    """ Calcuate and display Spearman Correlation """
+    corr_spearman = df.corr(method='spearman')['SalePrice'].sort_values(
+        key=abs, ascending=False)[1:]
+    fig, axes = plt.subplots(figsize=(6, 3))
+    axes = plt.bar(x=corr_spearman[:5].index, height=corr_spearman[:5])
+    plt.title("Spearman Correlation", fontsize=20, y=1.05)
+    st.pyplot(fig)
 
 
 def calc_display_pps_matrix(df):
@@ -167,6 +201,7 @@ def calc_display_pps_matrix(df):
     # pps_score_stats = pps_matrix_raw.query(
     #     "ppscore < 1").filter(['ppscore']).describe().T
     # st.write(pps_score_stats.round(3))
+    # print(pps_matrix_raw['y'])
     heatmap_pps(df=pps_matrix, threshold=0.15, figsize=(12, 10), font_annot=10)
 
 
