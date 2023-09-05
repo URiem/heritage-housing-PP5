@@ -56,9 +56,9 @@ def page_sale_price_analysis_body():
         f"A correlation study was conducted to better understand how "
         f"the variables are correlated to Sale Price. \n"
         f" Below, the results from the Pearson and Spearman correlations"
-        f" are displayed in a heatmap plot. The features most correlated "
-        f" with the Sale Price are then also displayed in a bar plot "
-        f" for simplicity. These figures show that"
+        f" are displayed in heatmaps. The features most correlated "
+        f" with the Sale Price are then also displayed in a bar plot for"
+        f" each correlation for simplicity. These figures show that"
         f" the most correlated variable are: **{vars_to_study}**. \n"
         f" Therefore, we also display scatterplots illustrating  the "
         f" correlation of each of these variables with the Sale Price."
@@ -71,7 +71,8 @@ def page_sale_price_analysis_body():
         f" between the variable can be represented by a straight line. \n"
         f" The last line of the heatmap shows the variables on the x-axis"
         f" which have a linear correlation with the Sale Price "
-        f" of more than 0.6. ")
+        f" of more than 0.6. These variables are then plotted "
+        f" separately in a bar plot.")
 
     if st.checkbox("Pearson Correlation"):
         calc_display_pearson_corr_heat(df)

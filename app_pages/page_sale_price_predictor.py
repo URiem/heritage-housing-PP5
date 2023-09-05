@@ -90,14 +90,12 @@ def DrawInputsWidgets():
     col03, col04 = st.beta_columns(2)
 
     # We are using these features to feed the ML pipeline -
-    # values copied from check_variables_for_UI() result
 
     # create an empty DataFrame, which will be the live data
     X_live = pd.DataFrame([], index=[0])
 
     # from here on we draw the widget based on the variable type
-    # (numerical or categorical)
-    # and set initial values
+    # (numerical or categorical) and set initial values
 
     with col01:
         feature = "OverallQual"

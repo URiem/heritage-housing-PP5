@@ -228,7 +228,7 @@ This section contains information on resources and technologies used to complete
 - [Kaggle](https://www.kaggle.com/) was used to access the dataset
 - [Streamlit](https://streamlit.io/) was used to develop the online app interface.
 
-### Main Data Analysis and Machine Learning 
+### Main Data Analysis and Machine Learning
 
 - [NumPy](https://numpy.org/) was used for mathematical operations for examples determining means, modes, and standard deviations.
 - [Pandas](https://pandas.pydata.org/) was used for reading and writing data files, inspecting, creating and manipulating series and dataframes.
