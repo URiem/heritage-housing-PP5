@@ -23,9 +23,9 @@ def page_predict_price_ml_body():
     X_test = pd.read_csv(
         f"outputs/ml_pipeline/predict_sale_price/{version}/X_test.csv")
     y_train = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/y_train.csv")
+        f"outputs/ml_pipeline/predict_sale_price/{version}/y_train.csv").squeeze()
     y_test = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/y_test.csv")
+        f"outputs/ml_pipeline/predict_sale_price/{version}/y_test.csv").squeeze()
 
     st.write("## ML Pipeline: Predict Property Sale Price")
     # display pipeline training summary conclusions
@@ -67,7 +67,7 @@ def page_predict_price_ml_body():
                            pipeline=sale_price_pipe)
 
     st.write("**Performance Plot**")
-    st.image(model_perform_img)
-    # regression_evaluation_plots(X_train=X_train, y_train=y_train, X_test=X_test,
-    #                             y_test=y_test, pipeline=sale_price_pipe,
-    #                             alpha_scatter=0.5)
+    regression_evaluation_plots(X_train=X_train, y_train=y_train,
+                                X_test=X_test,
+                                y_test=y_test, pipeline=sale_price_pipe,
+                                alpha_scatter=0.5)

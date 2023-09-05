@@ -27,7 +27,8 @@ def regression_evaluation(X, y, pipeline):
     st.write("\n")
 
 
-def regression_evaluation_plots(X_train, y_train, X_test, y_test, pipeline, alpha_scatter=0.5):
+def regression_evaluation_plots(X_train, y_train, X_test, y_test,
+                                pipeline, alpha_scatter):
     pred_train = pipeline.predict(X_train)
     pred_test = pipeline.predict(X_test)
 
@@ -36,12 +37,14 @@ def regression_evaluation_plots(X_train, y_train, X_test, y_test, pipeline, alph
     sns.lineplot(x=y_train, y=y_train, color='red', ax=axes[0])
     axes[0].set_xlabel("Actual")
     axes[0].set_ylabel("Predictions")
+    axes[0].tick_params(axis='x', rotation=90)
     axes[0].set_title("Train Set")
 
     sns.scatterplot(x=y_test, y=pred_test, alpha=alpha_scatter, ax=axes[1])
     sns.lineplot(x=y_test, y=y_test, color='red', ax=axes[1])
     axes[1].set_xlabel("Actual")
     axes[1].set_ylabel("Predictions")
+    axes[1].tick_params(axis='x', rotation=90)
     axes[1].set_title("Test Set")
 
     st.pyplot(fig)
