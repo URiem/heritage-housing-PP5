@@ -6,7 +6,9 @@ import streamlit as st
 def predict_sale_price(X_live, property_features, sale_price_pipeline):
 
     # from live data, subset features related to this pipeline
-    # in this particular pipeline all features are called
+    # the features are filtered using the list of features from the pipeline
+    # this is to avoid a scilent fail in case the input features
+    # are not in the same order as in the dataset used to train the model.
     X_live_sale_price = X_live.filter(property_features)
 
     # predict
