@@ -4,7 +4,7 @@
 
 **Developed by: Ulrike Riemenschneider**
 
-![I am responsive image](media/iamresponsivepp5.png)
+![I am responsive image](media/iamresponsive.png)
 
 **Live Site:** [Live webpage](https://heritage-housing-uriem-381968c86628.herokuapp.com)
 
@@ -33,7 +33,7 @@
     - [Heroku](#heroku)
   - [Technologies](#technologies)
     - [Development and Deployment](#development-and-deployment)
-    - [Main Data Analysis and Machine Learning Libraries](#main-data-analysis-and-machine-learning-libraries)
+    - [Main Data Analysis and Machine Learning](#main-data-analysis-and-machine-learning)
   - [Credits](#credits)
     - [Sources of code](#sources-of-code)
     - [Media](#media)
@@ -220,32 +220,32 @@ This section contains information on resources and technologies used to complete
 
 ### Development and Deployment
 
-- GitHub was used to create the project repository, story project files and record commits.
-- Code Anywhere was used as the development environment.
-- Jupyter Notebooks were used to analyse and engineer the data, and develop and evaluate the model pipeline.
+- [GitHub](https://github.com/) was used to create the project repository, story project files and record commits.
+- [Code Anywhere](https://codeanywhere.com/) was used as the development environment.
+- [Jupyter Notebooks](https://jupyter.org/) were used to analyse and engineer the data, and develop and evaluate the model pipeline.
   - In the terminal type `jupyter notebook --NotebookApp.token='' --NotebookApp.password=''` to start the jupyter server.
-- Heroku was used to deploy the project.
-- Kaggle was used to access the dataset.
-- Streamlit was used to develop the online app interface.
+- [Heroku](https://www.heroku.com/) was used to deploy the project.
+- [Kaggle](https://www.kaggle.com/) was used to access the dataset
+- [Streamlit](https://streamlit.io/) was used to develop the online app interface.
 
-### Main Data Analysis and Machine Learning Libraries
+### Main Data Analysis and Machine Learning 
 
-- Numpy was used for mathematical operations for examples determining means, modes, and standard deviations.
-- Pandas was used for reading and writing data files, inspecting, creating and manipulating series and dataframes.
-- ydata_profiling was used to create an extensive Profile Report of the dataset.
-- PPScore was used to determine the predictive power score of the data features.
-- MatPlotLib and Seaborn were used for constructing plots to visualize the data analysis, specifically the heatmaps, correlation plots and historgram of feature importance.
-- Feature Engine was used for various data cleaning and preparation tasks:
+- [NumPy](https://numpy.org/) was used for mathematical operations for examples determining means, modes, and standard deviations.
+- [Pandas](https://pandas.pydata.org/) was used for reading and writing data files, inspecting, creating and manipulating series and dataframes.
+- [ydata_profiling](https://ydata-profiling.ydata.ai/docs/master/index.html) was used to create an extensive Profile Report of the dataset.
+- [PPScore](https://pypi.org/project/ppscore/) was used to determine the predictive power score of the data features.
+- [MatPlotLib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/) were used for constructing plots to visualize the data analysis, specifically the heatmaps, correlation plots and historgram of feature importance.
+- [Feature Engine](https://feature-engine.trainindata.com/en/latest/index.html) was used for various data cleaning and preparation tasks:
   - Dropping Features, and Imputation of missing variables.
   - Ordinal Encoding, Numerical Transformations, Assessment of outliers, and Smart Correlation Assessment of variables.
-- SciKit Learn was used for many machine learning tasks:
+- [SciKit Learn](https://scikit-learn.org/stable/) was used for many machine learning tasks:
   - splitting train and test sets.
   - feature processing and selection.
   - gridsearch to determine the optimal regression model.
   - gridsearch to determine the optimal hyperparameters.
   - evaluation  of the model using r2_score.
   - Principal Component Analysis and evaluation.
-- XGBoost for the XGBoostRegressor algorithm.
+- [XGBoost](https://xgboost.readthedocs.io/en/stable/) for the XGBoostRegressor algorithm.
 
 ## Credits
 
