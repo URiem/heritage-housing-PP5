@@ -16,7 +16,8 @@ def page_sale_price_predictor_body():
     # load predict sale price files
     vsn = 'v2'
     sale_price_pipe = load_pkl_file(
-        f"outputs/ml_pipeline/predict_sale_price/{vsn}/regression_pipeline.pkl")
+        f"outputs/ml_pipeline/predict_sale_price/{vsn}/regression_pipeline.pkl"
+    )
     sale_price_features = (
         pd.read_csv(
             f"outputs/ml_pipeline/predict_sale_price/{vsn}/X_train.csv")
@@ -46,7 +47,7 @@ def page_sale_price_predictor_body():
         f" machine learning model and feature importance can be found on the "
         f" **ML: Price Prediction** page. \n\n"
         f"**Information on categorical features used in the prediction**\n\n"
-        f"* Overall Quality: 1 - Very Poor up to 10 - Very Excellent.\n\n"
+        f"* Overall Quality: 1 - Very Poor to 10 - Very Excellent.\n\n"
         f"All three numerical features are measured in squarefeet."
     )
     st.write("---")
@@ -90,7 +91,6 @@ def DrawInputsWidgets():
     col03, col04 = st.beta_columns(2)
 
     # We are using these features to feed the ML pipeline -
-
     # create an empty DataFrame, which will be the live data
     X_live = pd.DataFrame([], index=[0])
 
@@ -140,7 +140,5 @@ def DrawInputsWidgets():
             step=20
         )
     X_live[feature] = st_widget
-
-    # st.write(X_live)
 
     return X_live

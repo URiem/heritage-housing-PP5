@@ -34,16 +34,17 @@ def page_sale_price_analysis_body():
         st.write(
             f"**Information on Categorical Features**\n\n"
             f"* Basement Exposure: Gd - Good Exposure, Av - Average Exposure, "
-            f" Mn - Minimum Exposure, No: No Exposure, None - No Basement.\n\n"
+            f" Mn - Minimum Exposure, "
+            f" No - No Exposure, None - No Basement.\n\n"
             f"* Basement Finish Type: GLQ - Good Living Quarters, ALQ - "
             f" Average"
             f" Living Quarters, BLQ - Below Average Living Quarters, REC - "
             f" Average Rec Room, LwQ - Low  Quality, Unf - Unfinished, None - "
             f" No Basement.\n\n"
-            f"* Garage Finish: Fin - Finished, RFn: Rough Finish, "
+            f"* Garage Finish: Fin - Finished, RFn - Rough Finish, "
             f" Unf - Unfinished, None - No Garage.\n\n"
             f"* Kitchen Quality: Ex - Excellent, Gd - Good, TA - "
-            f" Typical/Average, Fa: Fair, Po: Poor.\n\n"
+            f" Typical/Average, Fa - Fair, Po - Poor.\n\n"
             f"* Overall Condition: 1 - Very Poor to 10 - Very Excellent.\n\n"
             f"* Overall Quality: 1 - Very Poor to 10 - Very Excellent.\n\n"
         )
@@ -85,7 +86,7 @@ def page_sale_price_analysis_body():
         f"where the variables behave similarly but not necessarily linearly.\n"
         f" As with the Pearson heatmap, the last line shows the variables"
         f" on the x-axis, that have a correlation of 0.6 or more with"
-        f" with the Sale Price. These are then also presented on a barplot"
+        f" the Sale Price. These are then also presented on a barplot"
         f" for simplicity.")
 
     if st.checkbox("Spearman Correlation"):
@@ -93,7 +94,7 @@ def page_sale_price_analysis_body():
         calc_display_spearman_corr_bar(df)
 
     st.info(
-        f"*** Correlation Scatterplots *** \n\n"
+        f"*** Correlation Histogram- and Scatterplots *** \n\n"
         f"The correlation indicators above confirm that "
         f" Sale Price correlates most strongly with "
         f"the following variables: \n"
@@ -110,10 +111,20 @@ def page_sale_price_analysis_body():
         f"* Sale Price tends to increase with an increase in "
         f" 1st Floor Squarefootage (1stFlrSF). \n\n"
         f"The scatterplots below illustrate the trends of the"
-        f"correlations. Each data point is also colored according"
-        f"to the Overall Quality of that data point. The"
-        f"trend that with increasing overall quality the Sale Price"
-        f"increases can be clearly seen on all plots."
+        f" correlations for each variable."
+        f" Firstly a two-dimentional histogram plot gives an idea"
+        f" of the data trend but also where the majority of data"
+        f" are concentrated. The darker blue areas indicated a high "
+        f" concentration of data points. "
+        f" The scatterplots in which the data points are shaded in redish"
+        f" tones, illustrates the correlation of the variable with"
+        f" Sale Price, but also shows how the Overall Quality of "
+        f" the homes always goes up with the Sale Price. "
+        f" Each data point is colored according"
+        f" to the Overall Quality of that data point, with the darker"
+        f" colors indicating higher quality. The"
+        f" trend that with increasing overall quality the Sale Price"
+        f" increases can be clearly seen on all plots."
     )
 
     # Correlation plots adapted from the Data Cleaning Notebook
@@ -121,15 +132,15 @@ def page_sale_price_analysis_body():
         correlation_to_sale_price_hist_scat(df, vars_to_study)
 
     st.info(
-        f"*** Heatmap: Predictive Power Score (PPS) ***  \n\n"
-        f"The PPS detects linear or non-linear relationships "
+        f"*** Heatmap and Barplot: Predictive Power Score (PPS) ***  \n\n"
+        f"Finally, the PPS detects linear or non-linear relationships "
         f"between two variables.\n"
         f"The score ranges from 0 (no predictive power) to 1 "
         f"(perfect predictive power). \n"
         f" To use the plot, find the row on the y-axis labeled 'SalePrice' "
         f" then follow along the row and see the variables, labeled on the "
         f" x-axis, with a pps of more"
-        f" than 0.2 expressed on the plot. Overall Quality (OverallQual)"
+        f" than 0.15 expressed on the plot. Overall Quality (OverallQual)"
         f" has the highest predictive power for the Sale Price target.")
 
     if st.checkbox("Predictive Power Score"):

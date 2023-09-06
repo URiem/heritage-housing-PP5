@@ -13,21 +13,19 @@ def page_predict_price_ml_body():
     # load regression pipeline files
     version = 'v2'
     sale_price_pipe = load_pkl_file(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/regression_pipeline.pkl")
+        f"outputs/ml_pipeline/predict_sale_price/{version}/regression_pipeline.pkl")  # noqa
     sale_price_feat_importance = plt.imread(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/features_importance.png")
-    model_perform_img = plt.imread(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/model_image.png")
+        f"outputs/ml_pipeline/predict_sale_price/{version}/features_importance.png")  # noqa
     X_train = pd.read_csv(
         f"outputs/ml_pipeline/predict_sale_price/{version}/X_train.csv")
     X_test = pd.read_csv(
         f"outputs/ml_pipeline/predict_sale_price/{version}/X_test.csv")
     y_train = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/y_train.csv").squeeze()
+        f"outputs/ml_pipeline/predict_sale_price/{version}/y_train.csv").squeeze()  # noqa
     y_test = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/y_test.csv").squeeze()
+        f"outputs/ml_pipeline/predict_sale_price/{version}/y_test.csv").squeeze()  # noqa
 
-    st.write("## ML Pipeline: Predict Property Sale Price")
+    st.write("### ML Pipeline: Predict Property Sale Price")
     # display pipeline training summary conclusions
     st.success(
         f" A Regressor model was trained to predict the sale price of"
@@ -36,9 +34,13 @@ def page_predict_price_ml_body():
         f" the target."
         f" Two features were dropped due to around 90% of data points missing."
         f" Feature engineering was carried out on the remaining data. "
-        f" The model was tuned using a hyperparameter search and was found to "
-        f" **meet the project requirement** with an R2 Score of 0.8 or better on "
-        f" both train and test sets. ")
+        f" The model was then tuned using a hyperparameter search and was "
+        f" found to "
+        f" **meet the project requirement** with an R2 Score of 0.8 or "
+        f" better on "
+        f" both train and test sets. The model identified the four most "
+        f" important features necessary to acchieve the best predictive "
+        f" power. ")
     st.write("---")
 
     # show pipeline steps
@@ -47,12 +49,12 @@ def page_predict_price_ml_body():
     st.write("---")
 
     # show best features
-    st.write("### The features the model was trained and their importance.")
+    st.write("### The features the model was trained on and their importance.")
     st.write(X_train.columns.to_list())
     st.image(sale_price_feat_importance)
 
     st.write(
-        f"The model was ultimately trained on four features: \n"
+        f"The model was ultimately trained on  the following four features: \n"
         f"* Overall Quality (OverallQual) \n"
         f"* Total Basement Area in squarefeet (TotalBsmtSF) \n"
         f"* 2nd Floor Area in squarefeet (2ndFlrSF) \n"

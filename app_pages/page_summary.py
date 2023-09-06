@@ -5,8 +5,6 @@ import pandas as pd
 
 def page_summary_body():
 
-    # Image sources: https://commons.wikimedia.org/wiki/File:Ames_Iowa_Main_Street_%28bannerportada_esvoy%29.jpg
-    # https://www.niche.com/colleges/iowa-state-university/
     image_main = plt.imread(f"media/amesiowa.jpg")
     image_isu = plt.imread(f"media/iowasu.jpg")
 
@@ -37,13 +35,13 @@ def page_summary_body():
         f" used to describe the home. \n \n"
         f"**Project Dataset**\n"
         f"* The data set can be accessed at "
-        f"[Kaggle](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data)"
+        f"[Kaggle](https://www.kaggle.com/datasets/codeinstitute/housing-prices-data)"  # noqa
         f" where it is hosted by Code Institute.\n"
         f"* The dataset represents a record of approx. 1500 real estate "
         f" sales in Ames, Iowa. Each record contains 23 features indicating"
         f" the house profile, such as Floor Area, Basement, Garage, "
         f" Kitchen, Lot,"
-        f" Porch, Wood Deck, and Year Built. It also contains the sale price."
+        f" Porch, Wood Deck, and Year Built. It also contains the Sale Price."
         f" The features are extensive, so please visit the site for more"
         f" information.")
 
