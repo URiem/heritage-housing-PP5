@@ -118,8 +118,7 @@ def page_sale_price_analysis_body():
 
     # Correlation plots adapted from the Data Cleaning Notebook
     if st.checkbox("Correlation Plots of Variables vs Sale Price"):
-        correlation_to_sale_price_hist(df, vars_to_study)
-        correlation_to_sale_price_scat(df, vars_to_study)
+        correlation_to_sale_price_hist_scat(df, vars_to_study)
 
     st.info(
         f"*** Heatmap: Predictive Power Score (PPS) ***  \n\n"
@@ -137,7 +136,7 @@ def page_sale_price_analysis_body():
         calc_display_pps_matrix(df)
 
 
-def correlation_to_sale_price_hist(df, vars_to_study):
+def correlation_to_sale_price_hist_scat(df, vars_to_study):
     """ Display correlation plot between variables and sale price """
     target_var = 'SalePrice'
     for col in vars_to_study:
@@ -147,11 +146,6 @@ def correlation_to_sale_price_hist(df, vars_to_study):
         st.pyplot(fig)
         st.write("\n\n")
 
-
-def correlation_to_sale_price_scat(df, vars_to_study):
-    """  scatterplots of variables vs SalePrice """
-    target_var = 'SalePrice'
-    for col in vars_to_study:
         fig, axes = plt.subplots(figsize=(8, 5))
         axes = sns.scatterplot(data=df, x=col, y=target_var, hue='OverallQual')
         # plt.xticks(rotation=90)
@@ -199,12 +193,16 @@ def calc_display_pps_matrix(df):
     pps_matrix_raw = pps.matrix(df)
     pps_matrix = pps_matrix_raw.filter(['x', 'y', 'ppscore']).pivot(
         columns='x', index='y', values='ppscore')
-
-    # pps_score_stats = pps_matrix_raw.query(
-    #     "ppscore < 1").filter(['ppscore']).describe().T
-    # st.write(pps_score_stats.round(3))
-    # print(pps_matrix_raw['y'])
     heatmap_pps(df=pps_matrix, threshold=0.15, figsize=(12, 10), font_annot=10)
+
+    pps_topscores = pps_matrix.iloc[19].sort_values(
+        key=abs, ascending=False)[1:6]
+
+    fig, axes = plt.subplots(figsize=(6, 3))
+    axes = plt.bar(x=pps_topscores.index, height=pps_topscores)
+    plt.xticks(rotation=90)
+    plt.title("Predictive Power Score", fontsize=20, y=1.05)
+    st.pyplot(fig)
 
 
 def heatmap_corr(df, threshold, figsize=(20, 12), font_annot=8):
