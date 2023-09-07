@@ -160,7 +160,8 @@ This page will incude:
 
 <details>
 <summary>Project Summary Page</summary>
-<img src="media/projectsummary1.png" width="80%">
+<img src="media/projectsummary1.png" width="60%">
+<img src="media/projectsummary2.png" width="60%">
 </details>
 
 - Description of the data set.
