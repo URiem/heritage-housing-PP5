@@ -18,7 +18,7 @@
   - [CRISP-DM Workflow](#crisp-dm-workflow)
   - [Business Requirements](#business-requirements)
   - [Dataset Content](#dataset-content)
-  - [Hypothesis and how to validate?](#hypothesis-and-how-to-validate)
+  - [Hypothesis and proposed validation](#hypothesis-and-proposed-validation)
   - [Mapping the business requirements to the Data Visualisations and ML tasks](#mapping-the-business-requirements-to-the-data-visualisations-and-ml-tasks)
   - [ML Business Case](#ml-business-case)
     - [Predict Sale Price](#predict-sale-price)
@@ -114,13 +114,16 @@ These requirements can also be viewed as the user stories of the client/end user
 |YearRemodAdd|Remodel date (same as construction date if no remodelling or additions)|1950 - 2010|
 |SalePrice|Sale Price|34900 - 755000|
 
-## Hypothesis and how to validate?
+## Hypothesis and proposed validation
 
 In order to fullfill the business requirements and in discussion with the client, the following hypotheses have been developed:
 
 1. We hypothesize that a property's sale price correlates strongly with a subset of the extensive features in the dataset. We aim to validate this using a correlation study of the dataset.
+   - The extensive correlation study we carried out and displayed on the app, confirms this hypothesis.
 2. We hypothesize that the correlation is strongest with common features of a home, such as total square footage, overall condition and overall quality. We aim to validate this using a correlation study.
+   - The extensive correlation study confirms that the five features with the strongest correlation to Sale Price are: 'OverallQual', 'GrLivArea', 'GarageArea', 'TotalBsmtSF', 'YearBuilt', and '1stFlrSF'. These are all features common to the majority of the homes.
 3. We hypothesize that we are able to predict a sale price with an R2 value of at least 0.8. We propose to validate this by developing a predictive model, optimizing it using data modelling tools and evaluating it based on the required criteria.
+   - The model evaluation has validated this hypothesis and in fact we were able to acchieve R2 values of 0.84 and more for both test and train sets.
 
 ## Mapping the business requirements to the Data Visualisations and ML tasks
 
