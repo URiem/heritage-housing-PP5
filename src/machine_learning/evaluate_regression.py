@@ -7,6 +7,7 @@ import pandas as pd
 
 # code copied from "Modeling and Evaluation" notebooks
 
+
 def regression_performance(X_train, y_train, X_test, y_test, pipeline):
     st.write("**Train Set**")
     regression_evaluation(X_train, y_train, pipeline)
@@ -22,7 +23,8 @@ def regression_evaluation(X, y, pipeline):
     st.write(
         f"Mean Squared Error: {mean_squared_error(y, prediction).round(3)}")
     st.write(
-        f"Root Mean Squared Error: {np.sqrt(mean_squared_error(y, prediction)).round(3)}")
+        f"Root Mean Squared Error: "
+        f" {np.sqrt(mean_squared_error(y, prediction)).round(3)}")
     st.write("\n")
 
 
