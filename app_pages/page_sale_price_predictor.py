@@ -101,7 +101,7 @@ def DrawInputsWidgets():
         feature = "OverallQual"
         st_widget = st.number_input(
             label='Overall Quality',
-            min_value=0,
+            min_value=1,
             max_value=10,
             value=int(df[feature].median()),
             step=1
