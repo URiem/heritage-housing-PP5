@@ -185,7 +185,7 @@ def calc_display_pearson_corr_bar(df):
         key=abs, ascending=False)[1:]
     fig, axes = plt.subplots(figsize=(6, 3))
     axes = plt.bar(x=corr_pearson[:5].index, height=corr_pearson[:5])
-    plt.title("Pearson Correlation", fontsize=20, y=1.05)
+    plt.title("Pearson Correlation with Sale Price", fontsize=15, y=1.05)
     st.pyplot(fig)
 
 
@@ -195,7 +195,7 @@ def calc_display_spearman_corr_bar(df):
         key=abs, ascending=False)[1:]
     fig, axes = plt.subplots(figsize=(6, 3))
     axes = plt.bar(x=corr_spearman[:5].index, height=corr_spearman[:5])
-    plt.title("Spearman Correlation", fontsize=20, y=1.05)
+    plt.title("Spearman Correlation with Sale Price", fontsize=15, y=1.05)
     st.pyplot(fig)
 
 
@@ -212,7 +212,7 @@ def calc_display_pps_matrix(df):
     fig, axes = plt.subplots(figsize=(6, 3))
     axes = plt.bar(x=pps_topscores.index, height=pps_topscores)
     plt.xticks(rotation=90)
-    plt.title("Predictive Power Score", fontsize=20, y=1.05)
+    plt.title("Predictive Power Score for Sale Price", fontsize=15, y=1.05)
     st.pyplot(fig)
 
 
