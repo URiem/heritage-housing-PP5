@@ -29,6 +29,7 @@
     - [Page 4: Hypothesis and Validation](#page-4-hypothesis-and-validation)
     - [Page 5: Machine Learning Model](#page-5-machine-learning-model)
   - [Unfixed Bugs](#unfixed-bugs)
+  - [PEP8 Compliance Testing](#pep8-compliance-testing)
   - [Deployment](#deployment)
     - [Heroku](#heroku)
   - [Technologies](#technologies)
@@ -230,6 +231,12 @@ This page will include
 ## Unfixed Bugs
 
 - You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not valid reason to leave bugs unfixed.
+
+## PEP8 Compliance Testing
+
+All python files where passed through the [CI Python Linter](https://pep8ci.herokuapp.com/). Those pages incude the app_pages files and the src files. No errors were detected.
+
+
 
 ## Deployment
 

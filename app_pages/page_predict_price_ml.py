@@ -11,19 +11,21 @@ from src.machine_learning.evaluate_regression import (
 def page_predict_price_ml_body():
 
     # load regression pipeline files
-    version = 'v2'
+    vsn = 'v2'
     sale_price_pipe = load_pkl_file(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/regression_pipeline.pkl")  # noqa
+        f"outputs/ml_pipeline/predict_sale_price/{vsn}/regression_pipeline.pkl"
+    )
     sale_price_feat_importance = plt.imread(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/features_importance.png")  # noqa
+        f"outputs/ml_pipeline/predict_sale_price/{vsn}/features_importance.png"
+    )
     X_train = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/X_train.csv")
+        f"outputs/ml_pipeline/predict_sale_price/{vsn}/X_train.csv")
     X_test = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/X_test.csv")
+        f"outputs/ml_pipeline/predict_sale_price/{vsn}/X_test.csv")
     y_train = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/y_train.csv").squeeze()  # noqa
+        f"outputs/ml_pipeline/predict_sale_price/{vsn}/y_train.csv").squeeze()
     y_test = pd.read_csv(
-        f"outputs/ml_pipeline/predict_sale_price/{version}/y_test.csv").squeeze()  # noqa
+        f"outputs/ml_pipeline/predict_sale_price/{vsn}/y_test.csv").squeeze()
 
     st.write("### ML Pipeline: Predict Property Sale Price")
     # display pipeline training summary conclusions
