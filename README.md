@@ -53,13 +53,13 @@ My personal motivation for choosing this project, is that I myself inherited two
 The project was developed using the Cross Industry Standard Process for Data Mining. This follows several iterations over well defined steps:
 
 1. **Epic 1**: Business Understanding - This incorporates an extensive discussion with the client and their expectations as well as the development of acceptance criteria. These are layed out in the [Business Requirements](#business-requirements) below.
-2. **Epic 2**: Data Understanding - The data needed to achieve the business requirements must be identified and understood. Are the data available to answer the business requirements? An initial statistical analysis helps to determine whether the data available are adequate to answer the business requirements. This task is carried out in the Data Cleaning Notebook.
-3. **Epic 3**: Data Preparation - Clean and impute data, carry out feature engineering, such as transformations or scaling, reformat data if needed. This step is very important to ensure the most effective and accurate modelling outcome. This is carried out in the Data Cleaning and Feature Engineering Notebooks.
-4. **Epic 4**: Modelling - Determine the model algorithms to be used. Split the data into train and test sets. Use train sets to validate various algorithms and tune them using a hyperparamter search. This is carried out in the ModelEvalRegression_v1 Notebook.
-5. **Epic 5**: Evaluation - Use the test set to evaluate the model performance. Match these with the business acceptance criteria.  This is carried out in the ModelEvalRegression_v1 and ModelEvalRegression_v2 Notebooks.
-6. **Epic 6**: Deployment - Develop the streamlit app that will satisfy the business requirements determined in collaboration with the client and deploy the app online. The app is deployed in Heroku and the process is described in the [Deployment](#deployment) section below.
+2. **Epic 2: Data Understanding** - The data needed to achieve the business requirements must be identified and understood. Are the data available to answer the business requirements? An initial statistical analysis helps to determine whether the data available are adequate to answer the business requirements. This task is carried out in the Data Cleaning Notebook.
+3. **Epic 3: Data Preparation** - Clean and impute data, carry out feature engineering, such as transformations or scaling, reformat data if needed. This step is very important to ensure the most effective and accurate modelling outcome. This is carried out in the Data Cleaning and Feature Engineering Notebooks.
+4. **Epic 4: Modelling** - Determine the model algorithms to be used. Split the data into train and test sets. Use train sets to validate various algorithms and tune them using a hyperparamter search. This is carried out in the ModelEvalRegression_v1 Notebook.
+5. **Epic 5: Evaluation** - Use the test set to evaluate the model performance. Match these with the business acceptance criteria.  This is carried out in the ModelEvalRegression_v1 and ModelEvalRegression_v2 Notebooks.
+6. **Epic 6: Deployment** - Develop the streamlit app that will satisfy the business requirements determined in collaboration with the client and deploy the app online. The app is deployed in Heroku and the process is described in the [Deployment](#deployment) section below.
 
-These steps can be matched up nicely to 6 Epics in the Agile development process. As we move along the pipeline of the development process we may flow back and forth between stages/epics of the development process as we learn new insight and have to revisit previous step in order to refine the development. While ultimately moving towards the final delivery of a product that satisfies the users/clients requirements.
+These steps can be matched up nicely to 6 Epics in the Agile development process. As we move along the pipeline of the development process we may flow back and forth between stages/epics as we learn new insight and have to revisit previous step in order to refine the development. While ultimately moving towards the final delivery of a product that satisfies the users/clients requirements.
 
 ## Business Requirements
 
@@ -237,7 +237,7 @@ The app does not currently contain any unfixed bugs. In one challenge that had t
 
 ## PEP8 Compliance Testing
 
-All python files where passed through the [CI Python Linter](https://pep8ci.herokuapp.com/). Those files incuded the app_pages files and the files in the src folder. A few small errors were fixed, such as long lines or trailing white spaces. Finally, no errors were detected.
+All python files where passed through the [CI Python Linter](https://pep8ci.herokuapp.com/). Those files incuded the `app_pages` files and the files in the `src` folder. A few small errors were fixed, such as long lines or trailing white spaces. Finally, no errors were detected.
 
 ## Deployment
 
@@ -291,8 +291,8 @@ This section contains information on resources and technologies used to complete
 
 ### Sources of code
 
-- The CI Churnometer Walkthrough Project and the CI course content was used to source various functions and classes in the development process, such as: HyperparameterOptimizationSearch, Feature Importance analysis, evaluation of train and test sets, PPS and Correlation Analysis and plots, Missing Data Evaluation, Data Cleaning Effect, etc.
-- The CI Churnometer Walkthrough Project was also the source of the Steamlit pages where were then adapted to the app deployed in this project.
+- The CI Churnometer Walkthrough Project and the CI course content was used to source various functions and classes in the development process, such as: HyperparameterOptimizationSearch, Feature Importance analysis, evaluation of train and test sets, PPS and Correlation Analysis and plots, Missing Data Evaluation, Data Cleaning Effect, etc. These are all used in the Jupyter Notebooks during the development process of the project.
+- The CI Churnometer Walkthrough Project was also the source of the Steamlit pages which were then modified and adapted to the app deployed in this project.
 - More generally, The walkthrough project provided a guide for the general layout and flow of the project.
 
 ### Media
@@ -312,4 +312,4 @@ Many thanks and appreciation go to the following sources and people:
 - The Slack community has, as always, been invaluable in answering questions. For this project a particular thank you to Niel McEwen. As the moderator of the Predictive Analytics PP5 Slack channel he was the main person to help resolve several technical issues.
 - My mentor Precious Ijege provided great feedback on how to improve the project in our mentor meetings.
 - StackOverflow helped resolve several issues through out the project.
-- As always a big thank you to my husband, Matthew, for his unwavering support!
+- As always a big thank you to my husband, Matthew, for his continued, unwavering support!
