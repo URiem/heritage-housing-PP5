@@ -84,7 +84,7 @@ def DrawInputsWidgets():
 
     # load dataset
     df = load_house_prices_data()
-    percentageMin, percentageMax = 0.4, 2.0
+    percentageMin, percentageMax = 0.2, 2.5
 
     # we create input widgets for the 4 best features
     col01, col02 = st.beta_columns(2)
@@ -96,6 +96,8 @@ def DrawInputsWidgets():
 
     # from here on we draw the widget based on the variable type
     # (numerical or categorical) and set initial values
+    # setup of widgest with min and max values, learned from
+    # https://github.com/t-hullis/milestone-project-heritage-housing-issues/tree/main
 
     with col01:
         feature = "OverallQual"
