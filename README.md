@@ -157,6 +157,12 @@ The project will be built using a Streamlit dashboard. The completed dashboard w
 This page will incude:
 
 - Project terms and jargon.
+
+<details>
+<summary>Project Summary Page</summary>
+<img src="media/projectsummary1.png" width="80%">
+</details>
+
 - Description of the data set.
 - Statement of business requirements.
 
