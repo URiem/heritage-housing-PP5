@@ -24,7 +24,7 @@
     - [Predict Sale Price](#predict-sale-price)
   - [Dashboard Design](#dashboard-design)
     - [Page 1: Project Summary](#page-1-project-summary)
-    - [Page 2: Analysis of Sale Price](#page-2-analysis-of-sale-price)
+    - [Page 2: Sale Price Correlation Analysis](#page-2-sale-price-correlation-analysis)
     - [Page 3: Sale Price Prediction](#page-3-sale-price-prediction)
     - [Page 4: Hypothesis and Validation](#page-4-hypothesis-and-validation)
     - [Page 5: Machine Learning Model](#page-5-machine-learning-model)
@@ -156,42 +156,61 @@ The project will be built using a Streamlit dashboard. The completed dashboard w
 
 This page will incude:
 
+- Statement of the project purpose.
 - Project terms and jargon.
+- Brief description of the data set.
+- Statement of business requirements.
+- Links to further information.
 
 <details>
-<summary>Project Summary Page</summary>
+<summary>Project Summary Page Screenshots</summary>
 <img src="media/projectsummary1.png" width="60%">
 <img src="media/projectsummary2.png" width="60%">
 </details>
 
-- Description of the data set.
-- Statement of business requirements.
+### Page 2: Sale Price Correlation Analysis
 
-### Page 2: Analysis of Sale Price
+This page will fullfill the first business requirement. It includes checkboxes so the client has the ability to display the following visual guides to the data features:
 
-This page will include checkboxes so the client has the ability to display the following visual guides to the data features:
-
-- Correlation between various features and the sale price.
-- Spearman and Pearson correlations.
+- A sample of data from the data set.
+- Pearson and spearman correlation plots between the features and the sale price.
+- Histogram and scatterplots of the most important predictive features.
 - Predictive Power Score analysis.
 
-This will satisfy the first Business Requrirement.
+<details>
+<summary>Correlation Analysis Screenshots</summary>
+<img src="media/correlationanalysisdataset.png" width="60%">
+<img src="media/correlationanalysispearson.png" width="60%">
+<img src="media/correlationanalysisspearman.png" width="60%">
+<img src="media/correlationanalysisplots1.png" width="60%">
+<img src="media/correlationanalysisplots2.png" width="60%">
+<img src="media/correlationanalysispps.png" width="60%">
+</details>
 
 ### Page 3: Sale Price Prediction
 
-This page will include:
+This page will satisfy the second Business Requirement. It will include:
 
 - Input feature of property attributes to produce a prediction on the sale price.
 - Display of the predicted sale price.
-- Predict the sale prices of the clients specific data in relation to her inherited properties.
+- Feature to predict the sale prices of the clients specific data in relation to her inherited properties.
 
-This will satisfy the second Business Requirement.
+<details>
+<summary>Sale Price Prediction Screenshots</summary>
+<img src="media/pricepredictorgeneral.png" width="60%">
+<img src="media/pricepredictorinherited.png" width="60%">
+</details>
 
 ### Page 4: Hypothesis and Validation
 
 This page will include:
 
 - A list of the project's hypothesis and how they were validated.
+
+<details>
+<summary>Hypothesis and Validation Screenshots</summary>
+<img src="media/hypothesisvalidation.png" width="60%">
+</details>
 
 ### Page 5: Machine Learning Model
 
@@ -200,7 +219,13 @@ This page will include
 - Information on the ML pipeline used to train the model.
 - Demonstration of feature importance.
 - Review of the pipeline performance.
-- Considerations and conclusions after pipeline training.
+
+<details>
+<summary>ML: Price Prediction Screenshots</summary>
+<img src="media/mlpipeline.png" width="60%">
+<img src="media/mlfeatureimportance.png" width="60%">
+<img src="media/mlpipelineperformance.png" width="60%">
+</details>
 
 ## Unfixed Bugs
 
