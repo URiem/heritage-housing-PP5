@@ -230,13 +230,11 @@ This page will include
 
 ## Unfixed Bugs
 
-- You will need to mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a big variable to consider, paucity of time and difficulty understanding implementation is not valid reason to leave bugs unfixed.
+The app does not currently contain any unfixed bugs. In one challenge that had to be overcome, the performance plots on the app page which describes the machine learning pipeline, did not display. This ended up being due to the fact that the y_test and y_train sets, when loaded, were not one dimensional. Adding the `.squeeze()` method to the `pd.csv_read` command fixed this issue.
 
 ## PEP8 Compliance Testing
 
-All python files where passed through the [CI Python Linter](https://pep8ci.herokuapp.com/). Those pages incude the app_pages files and the src files. No errors were detected.
-
-
+All python files where passed through the [CI Python Linter](https://pep8ci.herokuapp.com/). Those files incuded the app_pages files and the files in the src folder. A few small errors were fixed, such as long lines or trailing white spaces. Finally, no errors were detected.
 
 ## Deployment
 
