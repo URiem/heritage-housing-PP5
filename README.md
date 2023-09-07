@@ -18,7 +18,7 @@
   - [CRISP-DM Workflow](#crisp-dm-workflow)
   - [Business Requirements](#business-requirements)
   - [Dataset Content](#dataset-content)
-  - [Hypothesis and proposed validation](#hypothesis-and-proposed-validation)
+  - [Hypothesis, proposed validation and actual validation](#hypothesis-proposed-validation-and-actual-validation)
   - [Mapping the business requirements to the Data Visualisations and ML tasks](#mapping-the-business-requirements-to-the-data-visualisations-and-ml-tasks)
   - [ML Business Case](#ml-business-case)
     - [Predict Sale Price](#predict-sale-price)
@@ -52,7 +52,7 @@ My personal motivation for choosing this project, is that I myself inherited two
 
 The project was developed using the Cross Industry Standard Process for Data Mining. This follows several iterations over well defined steps:
 
-1. **Epic 1**: Business Understanding - This incorporates an extensive discussion with the client and their expectations as well as the development of acceptance criteria. These are layed out in the [Business Requirements](#business-requirements) below.
+1. **Epic 1: Business Understanding** - This incorporates an extensive discussion with the client and their expectations as well as the development of acceptance criteria. These are layed out in the [Business Requirements](#business-requirements) below.
 2. **Epic 2: Data Understanding** - The data needed to achieve the business requirements must be identified and understood. Are the data available to answer the business requirements? An initial statistical analysis helps to determine whether the data available are adequate to answer the business requirements. This task is carried out in the Data Cleaning Notebook.
 3. **Epic 3: Data Preparation** - Clean and impute data, carry out feature engineering, such as transformations or scaling, reformat data if needed. This step is very important to ensure the most effective and accurate modelling outcome. This is carried out in the Data Cleaning and Feature Engineering Notebooks.
 4. **Epic 4: Modelling** - Determine the model algorithms to be used. Split the data into train and test sets. Use train sets to validate various algorithms and tune them using a hyperparamter search. This is carried out in the ModelEvalRegression_v1 Notebook.
@@ -114,7 +114,7 @@ These requirements can also be viewed as the user stories of the client/end user
 |YearRemodAdd|Remodel date (same as construction date if no remodelling or additions)|1950 - 2010|
 |SalePrice|Sale Price|34900 - 755000|
 
-## Hypothesis and proposed validation
+## Hypothesis, proposed validation and actual validation
 
 In order to fullfill the business requirements and in discussion with the client, the following hypotheses have been developed:
 
